@@ -15,7 +15,8 @@ import {LinksApiService} from "../../shared/api/links-api.service";
     styleUrls: ['./links-page.component.css']
 })
 export class LinksPageComponent implements OnInit {
-    username?: Observable<string>
+    username$?: Observable<string>
+    username!: string
 
     linkData: LinkData = new LinkData()
 
@@ -32,10 +33,15 @@ export class LinksPageComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('LinksPageComponent - LinksID', this.appStorageService.linksId)
         this.user = this.appStorageService.user
 
-        this.username = this.route.paramMap
+        this.route.params.subscribe(
+            params => {
+                this.username = params['username']
+            }
+        )
+
+        this.username$ = this.route.paramMap
             .pipe(
                 map((params: ParamMap) => params.get('username'))
             ) as Observable<string>;
@@ -45,6 +51,16 @@ export class LinksPageComponent implements OnInit {
                 data => this.linkData = data,
                 error => console.log(error)
             )
+        } else {
+            this.linksApiService.getByUserName(this.username).subscribe(
+                data => {
+                    console.log(data)
+                    if (data)
+                        this.linkData = data
+                },
+                error => console.log(error)
+            )
+
         }
 
     }

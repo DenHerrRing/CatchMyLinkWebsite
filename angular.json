@@ -60,22 +60,10 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "CatchMyLinkWebsite:build:production",
-                            "fileReplacements": [
-                                {
-                                    "replace": "src/environments/environment.ts",
-                                    "with": "src/environments/environment.prod.ts"
-                                }
-                            ]
+                            "browserTarget": "CatchMyLinkWebsite:build:production"
                         },
                         "development": {
-                            "browserTarget": "CatchMyLinkWebsite:build:development",
-                            "fileReplacements": [
-                                {
-                                    "replace": "src/environments/environment.ts",
-                                    "with": "src/environments/environment.dev.ts"
-                                }
-                            ]
+                            "browserTarget": "CatchMyLinkWebsite:build:development"
                         }
                     },
                     "defaultConfiguration": "development"

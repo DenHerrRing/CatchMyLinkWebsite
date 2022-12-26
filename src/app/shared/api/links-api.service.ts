@@ -27,6 +27,14 @@ export class LinksApiService {
         )
     }
 
+    getByUserName(username: string): Observable<any> { // LinkData|null
+        return this.httpClient.get<LinksListResponse>(`${this.dbUrl}?username=${username}&expand=user`).pipe(
+            map(element => element.items),
+            map(element => element.at(0)),
+            map(element => element?.data)
+        )
+    }
+
     getByUserId(userId: string): Observable<LinksListResponse> {
         return this.httpClient.get<LinksListResponse>(`${this.dbUrl}?managed_by=${userId}`)
     }
