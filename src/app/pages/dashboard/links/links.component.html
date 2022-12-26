@@ -2,10 +2,10 @@
 
     <div class="flex w-full mb-8">
         <div class="flex-grow text-center">
-            <button class="btn">+ Link</button>
+            <button class="btn" (click)="onClickAddLink()">+ Link</button>
         </div>
         <div class="flex-grow text-center">
-            <button class="btn">+ Social</button>
+            <button class="btn" (click)="onClickAddSocial()">+ Social</button>
         </div>
     </div>
 
@@ -68,3 +68,6 @@
         </ng-container>
     </div>
 </div>
+
+<app-add-link-modal [showModal]="showAddLinkModal" (closeModal)="onEmitCloseAddLinkModal($event)" (save)="onEmitSaveAddLinkModal($event)"></app-add-link-modal>
+<app-add-social-modal [showModal]="showAddSocialModal" (closeModal)="onEmitCloseAddSocialModal($event)" (save)="onEmitSaveAddSocialModal($event)"></app-add-social-modal>

@@ -17,7 +17,7 @@ export class LinkPageService {
                 userId: 12,
                 name: 'Dennis Hering',
                 slug: 'DenHerrRing',
-                profilPicturePath: 'https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-1/310759250_10222196360444781_7702490517519246525_n.jpg?stp=c52.0.200.200a_dst-jpg_p200x200&_nc_cat=108&ccb=1-7&_nc_sid=7206a8&_nc_ohc=Y6P_bNq1SUgAX_7DqLY&_nc_ht=scontent-fra5-2.xx&oh=00_AfCKJWecwp7COnelwpVYV5tgSrfaB7eCFEt3Q9DIJW_BAQ&oe=63A550AF'
+                profilPicturePath: 'https://via.placeholder.com/150'
             },
             socials: [
                 {
@@ -50,22 +50,16 @@ export class LinkPageService {
             ],
             links: [
                 {
-                    id: 45,
                     title: 'Mein Blog',
-                    url: 'https://dennis.hering.dev',
-                    picturePath: ''
+                    url: 'https://dennis.hering.dev'
                 },
                 {
-                    id: 46,
                     title: 'Twitch',
-                    url: 'https://www.twitch.tv/mrcrunsh',
-                    picturePath: ''
+                    url: 'https://www.twitch.tv/mrcrunsh'
                 },
                 {
-                    id: 47,
                     title: 'Discord',
-                    url: 'https://www.google.com',
-                    picturePath: ''
+                    url: 'https://www.google.com'
                 }
             ]
         } as LinkData;
