@@ -35,9 +35,7 @@ export function appProviderFactory(appStorageService: AppStorageService) {
             multi: true
         },
     ],
-    exports: [
-
-    ],
+    exports: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {

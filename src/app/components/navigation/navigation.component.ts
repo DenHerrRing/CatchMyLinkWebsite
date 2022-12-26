@@ -19,6 +19,7 @@ export class NavigationComponent {
     onClickCopyToClipboard(): void {
         this.toastService.showSuccessToast('Dein Link wurde in die Zwischenablage kopiert!')
     }
+
     getLinkForCopy(): string {
         return `https://catchmy.link/@${this.appStorageService.user.username}`
     }

@@ -10,12 +10,22 @@ export class ToastService {
 
     private toastsSubject = new Subject<Toast[]>();
     private toasts: Toast[] = [];
+
     constructor() {
     }
 
     showSuccessToast(message: string) {
         let toast = new Toast()
         toast.type = ToastsEnum.SUCCESS
+        toast.message = message
+        this.toasts.push(toast);
+        this.toastsSubject.next(this.toasts);
+        setTimeout(() => this.clearToast(toast), 6000);
+    }
+
+    showErrorToast(message: string) {
+        let toast = new Toast()
+        toast.type = ToastsEnum.DANGER
         toast.message = message
         this.toasts.push(toast);
         this.toastsSubject.next(this.toasts);

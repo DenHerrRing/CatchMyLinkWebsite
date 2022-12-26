@@ -12,7 +12,7 @@ import {UserResponse} from "../../shared/models/api/responses/user.response";
     templateUrl: './sign-up.component.html',
     styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent implements OnInit{
+export class SignUpComponent implements OnInit {
     newUser!: UserResponse
 
     loading: boolean = false;

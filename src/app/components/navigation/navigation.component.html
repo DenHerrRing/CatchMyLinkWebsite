@@ -5,7 +5,8 @@
     <div class="flex-none">
         <ul class="menu menu-horizontal px-1">
             <li>
-                <button class="btn btn-ghost" ngxClipboard [cbContent]="getLinkForCopy()" (click)="onClickCopyToClipboard()">
+                <button class="btn btn-ghost" ngxClipboard [cbContent]="getLinkForCopy()"
+                        (click)="onClickCopyToClipboard()">
                     catchmy.link/@{{appStorageService.user.username}}
                 </button>
             </li>

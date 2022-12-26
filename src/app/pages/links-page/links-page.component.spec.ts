@@ -1,23 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LinksPageComponent } from './links-page.component';
+import {LinksPageComponent} from './links-page.component';
 
 describe('LinksPageComponent', () => {
-  let component: LinksPageComponent;
-  let fixture: ComponentFixture<LinksPageComponent>;
+    let component: LinksPageComponent;
+    let fixture: ComponentFixture<LinksPageComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [ LinksPageComponent ]
-    })
-    .compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [LinksPageComponent]
+        })
+            .compileComponents();
 
-    fixture = TestBed.createComponent(LinksPageComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+        fixture = TestBed.createComponent(LinksPageComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

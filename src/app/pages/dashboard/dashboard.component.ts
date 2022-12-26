@@ -4,8 +4,9 @@ import {FooterComponent} from "../../components/footer/footer.component";
 import {NavigationComponent} from "../../components/navigation/navigation.component";
 import {MockPhoneComponent} from "../../components/mock-phone/mock-phone.component";
 import {LinksComponent} from "./links/links.component";
-import {AppStorageService} from "../../shared/services/app-storage.service";
 import {ToastComponent} from "../../components/toast/toast.component";
+import {ActivatedRoute} from "@angular/router";
+import {AppStorageService} from "../../shared/services/app-storage.service";
 
 @Component({
     selector: 'app-dashboard',
@@ -20,7 +21,7 @@ export class DashboardComponent implements OnInit {
     tabStatsActive: boolean = false;
     tabSettingsActive: boolean = false;
 
-    constructor(public appStorageService: AppStorageService) {
+    constructor(private appStorage: AppStorageService) {
     }
 
     onClickLinksTab(): void {
@@ -53,6 +54,13 @@ export class DashboardComponent implements OnInit {
 
     ngOnInit(): void {
         this.tabLinksActive = true;
+
+        console.log('Dashboard: ', this.appStorage.user)
+        // this.route.data.subscribe(data => {
+        //     // data.data enthält die von dem Resolver geladenen Daten
+        //     console.log('Dashboard Data Resolver: ', data)
+        //     this.LinkPageService.linksListResponse = data as LinksListResponse;
+        // });
     }
 
 

@@ -13,4 +13,5 @@ export class UserResponse {
     email!: string;
     password?: string;
     passwordConfirm?: string;
+    links?: string;
 }
