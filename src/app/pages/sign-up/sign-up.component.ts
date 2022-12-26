@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {UserRecord} from "../../shared/models/api/user-record";
 import {FormsModule} from "@angular/forms";
 import {AuthApiService} from "../../shared/api/auth-api.service";
 import {UsersApiService} from "../../shared/api/users-api.service";
+import {UserResponse} from "../../shared/models/api/responses/user.response";
 
 @Component({
     selector: 'app-sign-up',
@@ -13,7 +13,7 @@ import {UsersApiService} from "../../shared/api/users-api.service";
     styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit{
-    newUser!: UserRecord
+    newUser!: UserResponse
 
     loading: boolean = false;
 
@@ -31,6 +31,6 @@ export class SignUpComponent implements OnInit{
     }
 
     ngOnInit(): void {
-        this.newUser = new UserRecord();
+        this.newUser = new UserResponse();
     }
 }

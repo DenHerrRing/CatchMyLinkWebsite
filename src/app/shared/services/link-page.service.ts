@@ -10,18 +10,23 @@ export class LinkPageService {
 
     constructor() {
         this.linkData = {
-            id: 12,
-            userName: 'dennis',
-            profile: {
-                id: 13,
-                userId: 12,
-                name: 'Dennis Hering',
-                slug: 'DenHerrRing',
-                profilPicturePath: 'https://via.placeholder.com/150'
+            id: 'adfasdfasfdasdf',
+            user: {
+                id: 'sdfasdfasdf',
+                collectionId: 'safasdfasfdasf',
+                collectionName: 'adfasdfadf',
+                firstName: 'Dennis',
+                lastName: 'Hering',
+                profilPicturePath: 'https://via.placeholder.com/150',
+                created: '',
+                updated: '',
+                username: 'DenHerrRing',
+                verified: true,
+                emailVisibility: true,
+                email: 'dennis@hering.me'
             },
             socials: [
                 {
-                    id: 234,
                     name: 'DEV',
                     preUrl: 'https://dev.to/',
                     accountUrl: 'denherrring',
@@ -30,7 +35,6 @@ export class LinkPageService {
                     iconColor: ''
                 },
                 {
-                    id: 235,
                     name: 'Facebook',
                     preUrl: 'https://www.facebook.com/',
                     accountUrl: 'DenHerrRing',
@@ -39,7 +43,6 @@ export class LinkPageService {
                     iconColor: ''
                 },
                 {
-                    id: 236,
                     name: 'GitHub',
                     preUrl: 'https://github.com/',
                     accountUrl: 'DenHerrRing',

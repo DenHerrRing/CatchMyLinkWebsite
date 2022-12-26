@@ -3,7 +3,6 @@ import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {UserResponse} from "../models/api/responses/user.response";
-import {UserRecord} from "../models/api/user-record";
 
 @Injectable({
     providedIn: 'root'
@@ -16,11 +15,11 @@ export class UsersApiService {
         this.dbUrl = `${environment.dbUrl}/api/collections/${environment.dbUsers}/records`
     }
 
-    create(user: UserRecord): Observable<UserResponse> {
+    create(user: UserResponse): Observable<UserResponse> {
         return this.httpClient.post<UserResponse>(this.dbUrl, user)
     }
 
-    update(user: UserRecord): Observable<UserResponse> {
+    update(user: UserResponse): Observable<UserResponse> {
         return this.httpClient.patch<UserResponse>(`${this.dbUrl}/${user.id}`, user)
     }
 }

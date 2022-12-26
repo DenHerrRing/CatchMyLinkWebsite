@@ -1,11 +1,10 @@
 import {Social} from "./social";
-import {Profile} from "./profile";
 import {Link} from "./link";
+import {UserResponse} from "./api/responses/user.response";
 
 export class LinkData {
-    id?: number
-    userName!: string
-    profile!: Profile
+    id?: string
+    user!: UserResponse
     socials!: Social[]
     links!: Link[]
 }
