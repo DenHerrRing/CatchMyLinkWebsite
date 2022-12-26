@@ -1,0 +1,59 @@
+<div class="flex flex-col h-screen">
+    <app-navigation></app-navigation>
+
+    <div class="flex flex-grow flex-col w-full lg:flex-row mb-6">
+
+        <div class="grid flex card bg-base-300 rounded-box place-items-center p-10 lg:ml-8">
+            <app-mock-phone></app-mock-phone>
+        </div>
+
+        <div class="divider lg:divider-horizontal"></div>
+
+        <div class="flex-grow card bg-base-300 p-10 lg:mr-8">
+            <div class="tabs pl-4">
+                <a class="tab tab-lg tab-lifted" [ngClass]="{'tab-active': tabLinksActive}" (click)="onClickLinksTab()">Links</a>
+                <a class="tab tab-lg tab-lifted" [ngClass]="{'tab-active': tabDesignActive}" (click)="onClickDesignTab()">Design</a>
+                <a class="tab tab-lg tab-lifted" [ngClass]="{'tab-active': tabStatsActive}" (click)="onClickStatsTab()">Stats</a>
+                <a class="tab tab-lg tab-lifted" [ngClass]="{'tab-active': tabSettingsActive}" (click)="onClickSettingsTab()">Einstellungen</a>
+            </div>
+            <div class="card bg-base-100 shadow-xl flex-grow">
+                <ng-container *ngIf="tabLinksActive">
+                    <app-links></app-links>
+                </ng-container>
+                <ng-container *ngIf="tabDesignActive">
+                    <div class="card-body">
+                        <h2 class="card-title">Design</h2>
+                        <p>If a dog chews shoes whose shoes does he choose?</p>
+                        <div class="card-actions justify-end">
+                            <button class="btn btn-primary">Buy Now</button>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="tabStatsActive">
+                    <div class="card-body">
+                        <h2 class="card-title">Stats</h2>
+                        <p>If a dog chews shoes whose shoes does he choose?</p>
+                        <div class="card-actions justify-end">
+                            <button class="btn btn-primary">Buy Now</button>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="tabSettingsActive">
+                    <div class="card-body">
+                        <h2 class="card-title">Einstellungen</h2>
+                        <p>If a dog chews shoes whose shoes does he choose?</p>
+                        <div class="card-actions justify-end">
+                            <button class="btn btn-primary">Buy Now</button>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+
+
+    </div>
+
+    <app-footer></app-footer>
+</div>
+
+
