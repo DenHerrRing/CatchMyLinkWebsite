@@ -7,6 +7,7 @@ import {LinkData} from "../models/link-data";
 export class LinkPageService {
 
     linkData!: LinkData
+
     constructor() {
         this.linkData = {
             id: 12,
@@ -50,8 +51,8 @@ export class LinkPageService {
             links: [
                 {
                     id: 45,
-                    title: 'IT Tacheles',
-                    url: 'https://it-tacheles.de',
+                    title: 'Mein Blog',
+                    url: 'https://dennis.hering.dev',
                     picturePath: ''
                 },
                 {

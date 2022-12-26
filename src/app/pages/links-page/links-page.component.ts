@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {Subscription} from "rxjs";
-import {ActivatedRoute} from "@angular/router";
+import {map, Observable, Subscription} from "rxjs";
+import {ActivatedRoute, ParamMap} from "@angular/router";
 import {LinkPageService} from "../../shared/services/link-page.service";
 import {LinkData} from "../../shared/models/link-data";
 
@@ -13,7 +13,7 @@ import {LinkData} from "../../shared/models/link-data";
   styleUrls: ['./links-page.component.css']
 })
 export class LinksPageComponent implements OnInit{
-    userId!: number
+    username?: Observable<string>
 
     linkData!: LinkData
     constructor(private route: ActivatedRoute,
@@ -26,9 +26,17 @@ export class LinksPageComponent implements OnInit{
     }
 
     ngOnInit() {
-        this.route.params.subscribe(params => {
-            this.userId = params['userid']
-        });
+
+        this.username = this.route.paramMap
+            .pipe(
+                map((params: ParamMap) => params.get('username'))
+            ) as Observable<string>;
+
+        // this.route.params.subscribe(params => {
+        //     this.username = params['username']
+        // });
+
+        console.log(this.username)
 
         this.linkData = this.linkPageService.linkData
     }

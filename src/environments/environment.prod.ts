@@ -1,4 +1,5 @@
 export const environment = {
     production: true,
-    dbUrl: 'https://db.hering.dev'
+    dbUrl: 'https://db.hering.dev',
+    dbUsers: 'devuserscml'
 };

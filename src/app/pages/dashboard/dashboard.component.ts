@@ -4,11 +4,13 @@ import {FooterComponent} from "../../components/footer/footer.component";
 import {NavigationComponent} from "../../components/navigation/navigation.component";
 import {MockPhoneComponent} from "../../components/mock-phone/mock-phone.component";
 import {LinksComponent} from "./links/links.component";
+import {AppStorageService} from "../../shared/services/app-storage.service";
+import {ToastComponent} from "../../components/toast/toast.component";
 
 @Component({
     selector: 'app-dashboard',
     standalone: true,
-    imports: [CommonModule, FooterComponent, NavigationComponent, MockPhoneComponent, LinksComponent],
+    imports: [CommonModule, FooterComponent, NavigationComponent, MockPhoneComponent, LinksComponent, ToastComponent],
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.css']
 })
@@ -18,7 +20,7 @@ export class DashboardComponent implements OnInit {
     tabStatsActive: boolean = false;
     tabSettingsActive: boolean = false;
 
-    constructor() {
+    constructor(public appStorageService: AppStorageService) {
     }
 
     onClickLinksTab(): void {

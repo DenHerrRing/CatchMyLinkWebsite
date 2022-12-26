@@ -1,13 +1,25 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Component} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {AppStorageService} from "../../shared/services/app-storage.service";
+import {ClipboardModule} from "ngx-clipboard";
+import {ToastService} from "../../shared/services/toast.service";
 
 @Component({
-  selector: 'app-navigation',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.css']
+    selector: 'app-navigation',
+    standalone: true,
+    imports: [CommonModule, ClipboardModule],
+    templateUrl: './navigation.component.html',
+    styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent {
+    constructor(public appStorageService: AppStorageService,
+                private toastService: ToastService) {
+    }
 
+    onClickCopyToClipboard(): void {
+        this.toastService.showSuccessToast('Dein Link wurde in die Zwischenablage kopiert!')
+    }
+    getLinkForCopy(): string {
+        return `https://catchmy.link/@${this.appStorageService.user.username}`
+    }
 }

@@ -4,7 +4,11 @@
     </div>
     <div class="flex-none">
         <ul class="menu menu-horizontal px-1">
-            <li><a>catchmy.link/[username]</a></li>
+            <li>
+                <button class="btn btn-ghost" ngxClipboard [cbContent]="getLinkForCopy()" (click)="onClickCopyToClipboard()">
+                    catchmy.link/@{{appStorageService.user.username}}
+                </button>
+            </li>
             <li tabindex="0">
                 <a>
                     Share
@@ -18,7 +22,11 @@
                     <li><a>QR code generieren</a></li>
                 </ul>
             </li>
-            <li><a>Item 3</a></li>
+            <li>
+                <button class="btn btn-ghost" (click)="appStorageService.logout()">
+                    Logout
+                </button>
+            </li>
         </ul>
     </div>
 </div>

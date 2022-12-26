@@ -1,0 +1,7 @@
+<div class="toast">
+    <div class="alert" [ngClass]="toast.type" *ngFor="let toast of toasts">
+        <div>
+            <span>{{toast.message}}</span>
+        </div>
+    </div>
+</div>
