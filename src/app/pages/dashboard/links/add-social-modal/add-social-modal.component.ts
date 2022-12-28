@@ -22,7 +22,6 @@ export class AddSocialModalComponent {
     newSocial: Social = new Social()
 
     constructor(public socialIcons: IconService) {
-        console.log(socialIcons.getSocialIcons())
     }
 
     onClickSelectIcon(icon: SocialIcon): void {

@@ -48,7 +48,6 @@ export class ConfigsComponent implements OnInit{
         this.linksApiService.get(this.appStorageService.linksId).subscribe(
             data => this.linkData = data,
             error => console.log(error),
-            () => console.log('ConfigComponent', this.linkData)
         )
         this.user = this.appStorageService.user
     }

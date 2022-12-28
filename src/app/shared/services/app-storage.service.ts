@@ -36,7 +36,6 @@ export class AppStorageService {
     }
 
     load(): Promise<boolean> {
-        console.log('user is logged in: ', this.isTokenSet())
         return new Promise(async (resolve) => {
             if (this.isTokenSet()) {
                 this.authService.authRefresh().subscribe(

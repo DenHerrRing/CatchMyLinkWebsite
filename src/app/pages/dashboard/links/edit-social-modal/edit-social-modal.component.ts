@@ -18,7 +18,6 @@ export class EditSocialModalComponent {
     @Output() save: EventEmitter<Social> = new EventEmitter<Social>()
 
     constructor(public socialIcons: IconService) {
-        console.log(socialIcons.getSocialIcons())
     }
 
 

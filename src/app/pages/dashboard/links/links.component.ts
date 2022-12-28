@@ -103,7 +103,6 @@ export class LinksComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log('LinksComponent - Links ID: ', this.appStorageService.linksId)
         this.linksApiService.get(this.appStorageService.linksId).subscribe(
             data => this.linkData = data,
             error => console.log(error)

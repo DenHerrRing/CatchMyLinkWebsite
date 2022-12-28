@@ -60,10 +60,10 @@ export class SignUpComponent implements OnInit {
 
         this.loading = true
         this.usersApiService.create(this.newUser).subscribe(
-            data => {
+            () => {
                 this.toastService.showSuccessToast('Dein Account wurde erstellt. Bitte melde dich an!')
                 this.usersApiService.getVerification(this.newUser.email).subscribe(
-                    verificationData => {
+                    () => {
                         this.loading = false
                         this.router.navigate(['login'], {queryParams: {'username': this.newUser.username}})
                     },
@@ -77,8 +77,6 @@ export class SignUpComponent implements OnInit {
             },
             error => {
                 this.alerts = error.error.data
-                console.log('Errors: ', this.alerts)
-                console.log(error)
                 this.toastService.showErrorToast(error.error.message)
                 this.loading = false
             },

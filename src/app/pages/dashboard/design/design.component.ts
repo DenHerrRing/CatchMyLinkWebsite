@@ -52,8 +52,7 @@ export class DesignComponent implements OnInit {
     ngOnInit(): void {
         this.linksApiService.get(this.appStorageService.linksId).subscribe(
             data => this.linkData = data,
-            error => console.log(error),
-            () => console.log('ConfigComponent', this.linkData)
+            error => console.log(error)
         )
         this.user = this.appStorageService.user
     }

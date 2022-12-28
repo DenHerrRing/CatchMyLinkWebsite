@@ -77,7 +77,6 @@ export class DashboardComponent implements OnInit {
     ngOnInit(): void {
         this.tabLinksActive = true;
 
-        console.log('Dashboard: ', this.appStorage.user)
         // this.route.data.subscribe(data => {
         //     // data.data enthält die von dem Resolver geladenen Daten
         //     console.log('Dashboard Data Resolver: ', data)
