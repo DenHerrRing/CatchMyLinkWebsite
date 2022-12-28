@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {UserResponse} from "../models/api/responses/user.response";
 import {AuthApiService} from "../api/auth-api.service";
-import {ToastService} from "./toast.service";
+import {Subject} from "rxjs";
+import {LinkData} from "../models/link-data";
 
 @Injectable({
     providedIn: 'root'
@@ -12,8 +13,9 @@ export class AppStorageService {
     linksId: string = ''
     user: UserResponse = new UserResponse()
 
-    constructor(private authService: AuthApiService,
-                private toastService: ToastService) {
+    emitChangesOnLinkData: Subject<LinkData> = new Subject<LinkData>()
+
+    constructor(private authService: AuthApiService) {
         console.log('Create AppStorageService')
     }
 

@@ -25,7 +25,11 @@ export class LinksPageComponent implements OnInit {
     constructor(private route: ActivatedRoute,
                 private linksApiService: LinksApiService,
                 private appStorageService: AppStorageService) {
-
+        this.appStorageService.emitChangesOnLinkData.subscribe(
+            next =>{
+                this.linkData = next
+            }
+        )
     }
 
     getSocialUrl(preUrl: string, accountUrl: string): string {
@@ -45,6 +49,8 @@ export class LinksPageComponent implements OnInit {
             .pipe(
                 map((params: ParamMap) => params.get('username'))
             ) as Observable<string>;
+
+
 
         if (this.appStorageService.isTokenSet()) {
             this.linksApiService.get(this.appStorageService.linksId).subscribe(

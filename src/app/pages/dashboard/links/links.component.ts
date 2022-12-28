@@ -56,15 +56,20 @@ export class LinksComponent implements OnInit {
     onEmitSaveAddLinkModal(value: Link): void {
         this.linkData.links.push(value)
         this.saveLinkSocialState(this.linkData)
+        this.appStorageService.emitChangesOnLinkData.next(this.linkData)
     }
 
     onEmitSaveEditLinkModal(): void {
         this.saveLinkSocialState(this.linkData)
+
+        this.appStorageService.emitChangesOnLinkData.next(this.linkData)
     }
 
     onEmitSaveAddSocialModal(value: Social): void {
         this.linkData.socials.push(value)
         this.saveLinkSocialState(this.linkData)
+
+        this.appStorageService.emitChangesOnLinkData.next(this.linkData)
     }
 
     getSocialUrl(preUrl: string, accountUrl: string): string {
