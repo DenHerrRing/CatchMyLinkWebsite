@@ -1,5 +1,4 @@
 export class Social {
-    id?: number
     name!: string
     preUrl!: string
     accountUrl!: string

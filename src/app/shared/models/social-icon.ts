@@ -11,7 +11,7 @@ export class SocialIcon {
         this.preUrl = preUrl
         this.accountUrl = ''
         this.placeholder = placeholder
-        this.iconUrl = placeholder
+        this.iconUrl = iconUrl
         this.iconColor = iconColor
     }
 }
