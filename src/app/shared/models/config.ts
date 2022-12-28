@@ -5,5 +5,5 @@ export class Config {
     username: string = ''
     seoTitle: string = ''
     seoDescription: string = ''
-    nsfw :boolean = true
+    nsfw :boolean = false
 }

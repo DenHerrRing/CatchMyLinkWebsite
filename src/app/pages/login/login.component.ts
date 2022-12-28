@@ -1,11 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {Router, RouterLink} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {AuthApiService} from "../../shared/api/auth-api.service";
 import {FormsModule} from "@angular/forms";
 import {AppStorageService} from "../../shared/services/app-storage.service";
 import {ToastComponent} from "../../components/toast/toast.component";
 import {ToastService} from "../../shared/services/toast.service";
+import {LinkData} from "../../shared/models/link-data";
+import {LinksApiService} from "../../shared/api/links-api.service";
+import {UsersApiService} from "../../shared/api/users-api.service";
 
 @Component({
     selector: 'app-login',
@@ -21,8 +24,11 @@ export class LoginComponent implements OnInit {
 
     constructor(private authService: AuthApiService,
                 private appStorageService: AppStorageService,
+                private linksApiService: LinksApiService,
+                private usersApiService: UsersApiService,
                 private toastService: ToastService,
-                private router: Router) {
+                private router: Router,
+                private route: ActivatedRoute) {
     }
 
     onClickSubmit(): void {
@@ -30,13 +36,50 @@ export class LoginComponent implements OnInit {
 
         this.authService.authWithPassword(this.identity, this.password).subscribe(
             data => {
-                this.appStorageService.token = data.token
-                this.appStorageService.user = data.record
-                this.appStorageService.linksId = data.record.links as string
-                this.appStorageService.userId = data.record.id
-                localStorage.setItem('token', data.token)
-                this.loading = false
-                this.router.navigate(['dashboard'])
+                console.log(data)
+
+                if (data.record.links === '') {
+                    // Create Links Data first time!
+                    let linkData = new LinkData()
+                    linkData.config.username = data.record.username
+                    linkData.config.firstName = ''
+                    linkData.config.lastName = ''
+                    linkData.config.seoTitle = ''
+                    linkData.config.seoDescription = ''
+                    linkData.config.profilePicturePath = 'https://via.placeholder.com/150'
+                    linkData.socials = []
+                    linkData.links = []
+                    this.linksApiService.create(data.record, linkData).subscribe(
+                        linksApiData => {
+                            data.record.links = linksApiData.id
+                            this.usersApiService.addLinks(data.record.id, linksApiData.id, data.token).subscribe(
+                                usersData => {
+                                    this.appStorageService.token = data.token
+                                    this.appStorageService.user = data.record
+                                    this.appStorageService.linksId = data.record.links as string
+                                    this.appStorageService.userId = data.record.id
+                                    localStorage.setItem('token', data.token)
+                                    this.loading = false
+                                    this.router.navigate(['dashboard'])
+                                },
+                                error => {
+                                    console.log('usersApiService error: ', error)
+                                }
+                            )
+                        },
+                        error => {
+                            console.log('linksApiData error: ', error)
+                        }
+                    )
+                } else {
+                    this.appStorageService.token = data.token
+                    this.appStorageService.user = data.record
+                    this.appStorageService.linksId = data.record.links as string
+                    this.appStorageService.userId = data.record.id
+                    localStorage.setItem('token', data.token)
+                    this.loading = false
+                    this.router.navigate(['dashboard'])
+                }
             },
             error => {
                 console.log(error)
@@ -49,5 +92,9 @@ export class LoginComponent implements OnInit {
     ngOnInit(): void {
         this.identity = '';
         this.password = '';
+
+        this.route.queryParams.subscribe((params) => {
+            this.identity = params['username']
+        })
     }
 }

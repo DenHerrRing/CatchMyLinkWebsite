@@ -39,8 +39,8 @@ export class LinksApiService {
         return this.httpClient.get<LinksListResponse>(`${this.dbUrl}?managed_by=${userId}`)
     }
 
-    create(user: UserResponse, linkData: LinkData): Observable<any> {
-        return this.httpClient.post<UserResponse>(this.dbUrl, {id: user.id, user, data: linkData})
+    create(user: UserResponse, linkData: LinkData): Observable<LinkResponse> {
+        return this.httpClient.post<LinkResponse>(this.dbUrl, {user: user.id, data: linkData, username: user.username})
     }
 
     update(linksDataId: string, linkData: LinkData): Observable<any> {
