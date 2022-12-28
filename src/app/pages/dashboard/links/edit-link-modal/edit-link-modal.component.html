@@ -1,0 +1,31 @@
+<div class="modal" [ngClass]="{'modal-open': showModal}">
+    <div class="modal-box">
+        <h3 class="font-bold text-lg">Hier kannst du deinen Link bearbeiten</h3>
+        <form>
+            <div class="form-control w-full max-w-xs">
+                <label class="label">
+                    <span class="label-text">Titel</span>
+                </label>
+                <input type="text" placeholder="Mein neuer Link" class="input input-bordered w-full max-w-xs"
+                       [(ngModel)]="link.title" name="title"/>
+                <label class="label">
+                    <span class="label-text-alt">Mein neuer Link</span>
+                </label>
+            </div>
+            <div class="form-control w-full max-w-xs">
+                <label class="label">
+                    <span class="label-text">Url</span>
+                </label>
+                <input type="text" placeholder="https://www.meinblog.de" class="input input-bordered w-full max-w-xs"
+                       [(ngModel)]="link.url" name="url"/>
+                <label class="label">
+                    <span class="label-text-alt">https://www.meinblog.de</span>
+                </label>
+            </div>
+        </form>
+        <div class="modal-action">
+            <button class="btn" (click)="onClickCloseModal()">Abbrechen</button>
+            <button class="btn btn-success" (click)="onClickSave(link)">Speichern</button>
+        </div>
+    </div>
+</div>
