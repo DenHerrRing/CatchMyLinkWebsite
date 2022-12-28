@@ -8,6 +8,7 @@ import {ToastService} from "../../shared/services/toast.service";
 import {ToastComponent} from "../../components/toast/toast.component";
 import {LinksApiService} from "../../shared/api/links-api.service";
 import {Router} from "@angular/router";
+import {ApiResponseAlert} from "../../shared/models/alerts/api-response-alert";
 
 @Component({
     selector: 'app-sign-up',
@@ -20,6 +21,8 @@ export class SignUpComponent implements OnInit {
     newUser!: UserResponse
 
     loading: boolean = false;
+
+    alerts: ApiResponseAlert[] = []
 
     constructor(private authService: AuthApiService,
                 private usersApiService: UsersApiService,
@@ -73,6 +76,8 @@ export class SignUpComponent implements OnInit {
                 this.loading = false
             },
             error => {
+                this.alerts = error.error.data
+                console.log('Errors: ', this.alerts)
                 console.log(error)
                 this.toastService.showErrorToast(error.error.message)
                 this.loading = false
