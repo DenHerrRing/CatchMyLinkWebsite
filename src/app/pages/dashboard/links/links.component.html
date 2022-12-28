@@ -42,10 +42,10 @@
             <div class="grid flex-grow mb-3">
                 <div class="rounded border-1 border-solid border-black p-2 flex shadow-lg">
                     <ng-container>
-                        <div class="mx-auto mr-3">
+                        <div class="mx-auto mr-3" (click)="onClickEditSocial(social)">
                             <img class="w-12 h-12" alt="Social Icon" [src]="social.iconUrl"/>
                         </div>
-                        <div class="flex-auto">
+                        <div class="flex-auto" (click)="onClickEditSocial(social)">
                             <h3 class="card-title">{{social.name}}</h3>
                             <p>{{getSocialUrl(social.preUrl, social.accountUrl)}}</p>
                         </div>
@@ -75,3 +75,5 @@
                     (save)="onEmitSaveEditLinkModal()"></app-edit-link-modal>
 <app-add-social-modal [showModal]="showAddSocialModal" (closeModal)="onEmitCloseAddSocialModal($event)"
                       (save)="onEmitSaveAddSocialModal($event)"></app-add-social-modal>
+<app-edit-social-modal [social]="selectedSocial" [showModal]="showEditSocialModal" (closeModal)="onEmitCloseEditSocialModal($event)"
+                      (save)="onEmitSaveEditSocialModal()"></app-edit-social-modal>

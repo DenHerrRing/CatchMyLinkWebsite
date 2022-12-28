@@ -8,11 +8,12 @@ import {AddSocialModalComponent} from "./add-social-modal/add-social-modal.compo
 import {LinksApiService} from "../../../shared/api/links-api.service";
 import {AppStorageService} from "../../../shared/services/app-storage.service";
 import {EditLinkModalComponent} from "./edit-link-modal/edit-link-modal.component";
+import {EditSocialModalComponent} from "./edit-social-modal/edit-social-modal.component";
 
 @Component({
     selector: 'app-links',
     standalone: true,
-    imports: [CommonModule, AddLinkModalComponent, AddSocialModalComponent, EditLinkModalComponent],
+    imports: [CommonModule, AddLinkModalComponent, AddSocialModalComponent, EditLinkModalComponent, EditSocialModalComponent],
     templateUrl: './links.component.html',
     styleUrls: ['./links.component.css']
 })
@@ -23,6 +24,7 @@ export class LinksComponent implements OnInit {
     showAddLinkModal: boolean = false;
     showEditLinkModal: boolean = false;
     showAddSocialModal: boolean = false;
+    showEditSocialModal: boolean = false;
 
     constructor(private linksApiService: LinksApiService,
                 private appStorageService: AppStorageService) {
@@ -35,6 +37,11 @@ export class LinksComponent implements OnInit {
     onClickEditLink(link: Link): void {
         this.selectedLink = link;
         this.showEditLinkModal = true;
+    }
+
+    onClickEditSocial(social: Social): void {
+        this.selectedSocial = social;
+        this.showEditSocialModal = true;
     }
 
     onClickAddSocial(): void {
@@ -53,6 +60,10 @@ export class LinksComponent implements OnInit {
         this.showAddSocialModal = value;
     }
 
+    onEmitCloseEditSocialModal(value: boolean): void {
+        this.showEditSocialModal = value;
+    }
+
     onEmitSaveAddLinkModal(value: Link): void {
         this.linkData.links.push(value)
         this.saveLinkSocialState(this.linkData)
@@ -67,6 +78,12 @@ export class LinksComponent implements OnInit {
 
     onEmitSaveAddSocialModal(value: Social): void {
         this.linkData.socials.push(value)
+        this.saveLinkSocialState(this.linkData)
+
+        this.appStorageService.emitChangesOnLinkData.next(this.linkData)
+    }
+
+    onEmitSaveEditSocialModal(): void {
         this.saveLinkSocialState(this.linkData)
 
         this.appStorageService.emitChangesOnLinkData.next(this.linkData)
