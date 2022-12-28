@@ -44,6 +44,6 @@ export class LinksApiService {
     }
 
     update(linksDataId: string, linkData: LinkData): Observable<any> {
-        return this.httpClient.patch<UserResponse>(`${this.dbUrl}/${linksDataId}`, {username: linkData.user?.username, data: linkData})
+        return this.httpClient.patch<UserResponse>(`${this.dbUrl}/${linksDataId}`, {username: linkData.config?.username, data: linkData})
     }
 }

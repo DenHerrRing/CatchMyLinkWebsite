@@ -1,7 +1,37 @@
 <div class="card-body">
     <h2 class="card-title">Design</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
-    <div class="card-actions justify-end">
-        <button class="btn btn-primary">Buy Now</button>
+
+    <div class="card w-full bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title">Profil</h2>
+            <p>Hier kannst du deine Profildaten ändern.</p>
+            <form>
+                <div class="form-control w-full">
+                    <label class="label">
+                        <span class="label-text">Vorname</span>
+                    </label>
+                    <input type="text" placeholder="John" class="input input-bordered w-full max-w-xs" [(ngModel)]="linkData.config.firstName" name="firstName"/>
+                </div>
+                <div class="form-control w-ful">
+                    <label class="label">
+                        <span class="label-text">Nachname</span>
+                    </label>
+                    <input type="text" placeholder="Doe" class="input input-bordered w-full max-w-xs" [(ngModel)]="linkData.config.lastName" name="lastName"/>
+                </div>
+                <div class="form-control w-full">
+                    <label class="label">
+                        <span class="label-text">Username</span>
+                    </label>
+                    <input type="text" placeholder="DenHerrRing" class="input input-bordered w-full max-w-xs" maxlength="160" [(ngModel)]="linkData.config.username" name="username" />
+                </div>
+            </form>
+
+
+
+            <div class="card-actions justify-end">
+                <button class="btn" [ngClass]="{'loading': showLoading}" (click)="onClickSaveProfile()">Speichern</button>
+            </div>
+        </div>
     </div>
+
 </div>

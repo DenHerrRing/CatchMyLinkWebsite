@@ -1,7 +1,83 @@
 <div class="card-body">
     <h2 class="card-title">Einstellungen</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
-    <div class="card-actions justify-end">
-        <button class="btn btn-primary">Buy Now</button>
+
+    <div class="card w-full bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title">18+ Content Warnung</h2>
+            <p>Zeige eine Warnung bevor deine CatchMyLink Seite angezeigt wird</p>
+            <div class="card-actions justify-end">
+                <input type="checkbox" class="toggle" [(ngModel)]="linkData.config.nsfw" name="nsfw" (click)="changeToggleStatus(!linkData.config.nsfw)"/>
+            </div>
+        </div>
     </div>
+
+    <div class="card w-full bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title">SEO</h2>
+            <p>Wählen Sie den Titel und die Beschreibung, die in Suchmaschinen und sozialen Netzwerken erscheinen sollen.</p>
+            <form>
+                <div class="form-control w-full max-w-xs">
+                    <label class="label">
+                        <span class="label-text">Titel</span>
+                    </label>
+                    <input type="text" placeholder="SEO Titel" class="input input-bordered w-full max-w-xs" [(ngModel)]="linkData.config.seoTitle" name="seoTitle"/>
+                </div>
+                <div class="form-control w-full max-w-xs">
+                    <label class="label">
+                        <span class="label-text">Beschreibung</span>
+                    </label>
+                    <input type="text" placeholder="SEO Beschreibung (max 160 Zeichen)" class="input input-bordered w-full max-w-xs" maxlength="160" [(ngModel)]="linkData.config.seoDescription" name="seoDescription" />
+                    <label class="label">
+                        <span class="label-text-alt">{{linkData.config.seoDescription.length}} / 160 Zeichen</span>
+                    </label>
+                </div>
+            </form>
+
+
+
+            <div class="card-actions justify-end">
+                <button class="btn" [ngClass]="{'loading': showLoading}" (click)="onClickSave()">Speichern</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card w-full bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title">Dein Account</h2>
+            <p>Wählen Sie den Titel und die Beschreibung, die in Suchmaschinen und sozialen Netzwerken erscheinen sollen.</p>
+            <form>
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text">Username</span>
+                    </label>
+                    <label class="input-group">
+                        <span>catchmy.link/@</span>
+                        <input type="text" placeholder="DenHerrRing" class="input input-bordered" [(ngModel)]="linkData.config.username" name="username"/>
+                    </label>
+                </div>
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text">Email</span>
+                    </label>
+                    <label class="input-group">
+                        <span>Email</span>
+                        <input type="text" placeholder="john@doe.de" class="input input-bordered" [(ngModel)]="user.email" name="email"/>
+                    </label>
+                </div>
+                <div class="form-control">
+                    <div class="w-1/3 mt-4">
+                        <button class="btn">Passwort ändern</button>
+                    </div>
+
+                </div>
+            </form>
+
+
+
+            <div class="card-actions justify-end">
+                <button class="btn">Speichern</button>
+            </div>
+        </div>
+    </div>
+
 </div>

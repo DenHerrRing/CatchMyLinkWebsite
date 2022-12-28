@@ -1,8 +1,9 @@
 import {Social} from "./social";
 import {Link} from "./link";
+import {Config} from "./config";
 
 export class LinkData {
-    user?: { firstName: string, lastName: string, profilePicturePath: string, username: string};
+    config: Config = new Config()
     socials!: Social[]
     links!: Link[]
 }
