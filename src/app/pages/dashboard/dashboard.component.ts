@@ -5,13 +5,15 @@ import {NavigationComponent} from "../../components/navigation/navigation.compon
 import {MockPhoneComponent} from "../../components/mock-phone/mock-phone.component";
 import {LinksComponent} from "./links/links.component";
 import {ToastComponent} from "../../components/toast/toast.component";
-import {ActivatedRoute} from "@angular/router";
 import {AppStorageService} from "../../shared/services/app-storage.service";
+import {DesignComponent} from "./design/design.component";
+import {StatsComponent} from "./stats/stats.component";
+import {ConfigsComponent} from "./configs/configs.component";
 
 @Component({
     selector: 'app-dashboard',
     standalone: true,
-    imports: [CommonModule, FooterComponent, NavigationComponent, MockPhoneComponent, LinksComponent, ToastComponent],
+    imports: [CommonModule, FooterComponent, NavigationComponent, MockPhoneComponent, LinksComponent, ToastComponent, DesignComponent, StatsComponent, ConfigsComponent],
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.css']
 })
