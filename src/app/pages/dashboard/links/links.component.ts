@@ -7,17 +7,21 @@ import {Social} from "../../../shared/models/social";
 import {AddSocialModalComponent} from "./add-social-modal/add-social-modal.component";
 import {LinksApiService} from "../../../shared/api/links-api.service";
 import {AppStorageService} from "../../../shared/services/app-storage.service";
+import {EditLinkModalComponent} from "./edit-link-modal/edit-link-modal.component";
 
 @Component({
     selector: 'app-links',
     standalone: true,
-    imports: [CommonModule, AddLinkModalComponent, AddSocialModalComponent],
+    imports: [CommonModule, AddLinkModalComponent, AddSocialModalComponent, EditLinkModalComponent],
     templateUrl: './links.component.html',
     styleUrls: ['./links.component.css']
 })
 export class LinksComponent implements OnInit {
     linkData: LinkData = new LinkData()
+    selectedLink: Link = new Link();
+    selectedSocial: Social = new Social();
     showAddLinkModal: boolean = false;
+    showEditLinkModal: boolean = false;
     showAddSocialModal: boolean = false;
 
     constructor(private linksApiService: LinksApiService,
@@ -28,6 +32,11 @@ export class LinksComponent implements OnInit {
         this.showAddLinkModal = true;
     }
 
+    onClickEditLink(link: Link): void {
+        this.selectedLink = link;
+        this.showEditLinkModal = true;
+    }
+
     onClickAddSocial(): void {
         this.showAddSocialModal = true;
     }
@@ -36,20 +45,39 @@ export class LinksComponent implements OnInit {
         this.showAddLinkModal = value;
     }
 
+    onEmitCloseEditLinkModal(value: boolean): void {
+        this.showEditLinkModal = value;
+    }
+
     onEmitCloseAddSocialModal(value: boolean): void {
         this.showAddSocialModal = value;
     }
 
     onEmitSaveAddLinkModal(value: Link): void {
-        console.log(value);
+        this.linkData.links.push(value)
+        this.saveLinkSocialState(this.linkData)
+    }
+
+    onEmitSaveEditLinkModal(): void {
+        this.saveLinkSocialState(this.linkData)
     }
 
     onEmitSaveAddSocialModal(value: Social): void {
-        console.log(value);
+        this.linkData.socials.push(value)
+        this.saveLinkSocialState(this.linkData)
     }
 
     getSocialUrl(preUrl: string, accountUrl: string): string {
         return `${preUrl}${accountUrl}`
+    }
+
+    saveLinkSocialState(linksData: LinkData): void {
+        this.linksApiService.update(this.appStorageService.linksId, linksData).subscribe(
+            data => {
+                this.linkData = data.data
+            },
+            error => console.log(error)
+        )
     }
 
     ngOnInit(): void {

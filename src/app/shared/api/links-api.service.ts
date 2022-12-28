@@ -43,7 +43,7 @@ export class LinksApiService {
         return this.httpClient.post<UserResponse>(this.dbUrl, {id: user.id, user, data: linkData})
     }
 
-    update(user: UserResponse, linkData: LinkData): Observable<any> {
-        return this.httpClient.patch<UserResponse>(`${this.dbUrl}/${user.id}`, {id: user.id, user, data: linkData})
+    update(linksDataId: string, linkData: LinkData): Observable<any> {
+        return this.httpClient.patch<UserResponse>(`${this.dbUrl}/${linksDataId}`, {username: linkData.user?.username, data: linkData})
     }
 }

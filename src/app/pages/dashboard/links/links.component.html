@@ -15,7 +15,7 @@
         <ng-container *ngFor="let link of linkData.links">
             <div class="grid flex-grow mb-3">
                 <div class="rounded border-1 border-solid border-black p-2 flex shadow-lg">
-                    <div class="flex-auto">
+                    <div class="flex-auto" (click)="onClickEditLink(link)">
                         <h3 class="card-title">{{link.title}}</h3>
                         <p>{{link.url}}</p>
                     </div>
@@ -43,7 +43,7 @@
                 <div class="rounded border-1 border-solid border-black p-2 flex shadow-lg">
                     <ng-container>
                         <div class="mx-auto mr-3">
-                            <img class="w-12 h-12" [src]="social.iconUrl"/>
+                            <img class="w-12 h-12" alt="Social Icon" [src]="social.iconUrl"/>
                         </div>
                         <div class="flex-auto">
                             <h3 class="card-title">{{social.name}}</h3>
@@ -71,5 +71,7 @@
 
 <app-add-link-modal [showModal]="showAddLinkModal" (closeModal)="onEmitCloseAddLinkModal($event)"
                     (save)="onEmitSaveAddLinkModal($event)"></app-add-link-modal>
+<app-edit-link-modal [link]="selectedLink" [showModal]="showEditLinkModal" (closeModal)="onEmitCloseEditLinkModal($event)"
+                    (save)="onEmitSaveEditLinkModal()"></app-edit-link-modal>
 <app-add-social-modal [showModal]="showAddSocialModal" (closeModal)="onEmitCloseAddSocialModal($event)"
                       (save)="onEmitSaveAddSocialModal($event)"></app-add-social-modal>
