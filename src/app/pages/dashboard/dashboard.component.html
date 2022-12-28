@@ -1,6 +1,34 @@
 <div class="flex flex-col h-screen">
     <app-navigation></app-navigation>
 
+
+    <div class="flex my-3 ml-10">
+        <div class="alert shadow-lg w-1/2" *ngIf="appStorage.user.verified !== true">
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info flex-shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <div>
+                    <h3 class="font-bold">Deine Email ist nicht bestätigt!</h3>
+                    <div class="text-xs">
+                        Damit du alle Funktionen nutzen kannst, ist es wichtig, dass du deine Email bestätigst. <br>
+                        Du solltest eine Verification-Mail erhalten haben.
+                    </div>
+                </div>
+            </div>
+            <div class="flex-none">
+                <button class="btn btn-sm" [ngClass]="{'loading': showLoadingButton}" (click)="onClickVerifyEmail()">Email erneut senden</button>
+            </div>
+        </div>
+        <div class="alert alert-success shadow-lg w-1/2 mx-8" *ngIf="showVerifyNotification">
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span>Deine Verifizierungsmail haben wir versenden. Schau auch in deinem Spam Ordner nach!</span>
+            </div>
+        </div>
+    </div>
+
+
+
+
     <div class="flex flex-grow flex-col w-full lg:flex-row mb-6">
 
         <div class="grid flex card bg-base-300 rounded-box place-items-center p-10 lg:ml-8">

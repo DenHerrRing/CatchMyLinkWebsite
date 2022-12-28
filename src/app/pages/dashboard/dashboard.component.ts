@@ -9,6 +9,7 @@ import {AppStorageService} from "../../shared/services/app-storage.service";
 import {DesignComponent} from "./design/design.component";
 import {StatsComponent} from "./stats/stats.component";
 import {ConfigsComponent} from "./configs/configs.component";
+import {UsersApiService} from "../../shared/api/users-api.service";
 
 @Component({
     selector: 'app-dashboard',
@@ -23,7 +24,26 @@ export class DashboardComponent implements OnInit {
     tabStatsActive: boolean = false;
     tabSettingsActive: boolean = false;
 
-    constructor(private appStorage: AppStorageService) {
+    showVerifyNotification: boolean = false;
+    showLoadingButton: boolean = false;
+
+    constructor(public appStorage: AppStorageService,
+                private usersApiService: UsersApiService) {
+    }
+
+    onClickVerifyEmail(): void {
+        this.showLoadingButton = true
+        this.usersApiService.getVerification(this.appStorage.user.email).subscribe(
+            () => {
+                this.showVerifyNotification = true
+                setTimeout(() => {
+                    this.showVerifyNotification = false
+                }, 6000);
+                this.showLoadingButton = false
+            }, () => {
+                this.showLoadingButton = false
+            }
+        )
     }
 
     onClickLinksTab(): void {
