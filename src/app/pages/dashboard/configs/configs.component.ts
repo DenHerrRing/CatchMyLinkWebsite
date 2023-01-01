@@ -44,6 +44,22 @@ export class ConfigsComponent implements OnInit{
         )
     }
 
+    onClickSaveUser():void {
+        // TODO: Diese Funktionalität muss noch überdacht werden!
+        return
+        this.showLoading = true
+        this.usersApiService.update(this.user).subscribe(
+            userData => {
+                console.log(userData)
+                this.showLoading = false
+            },
+            error => {
+                console.log('Error while update User:, ', error)
+                this.showLoading = false
+            }
+        )
+    }
+
     onClickSave(): void {
         this.showLoading = true
         this.linksApiService.update(this.appStorageService.linksId, this.linkData).subscribe(
@@ -66,7 +82,10 @@ export class ConfigsComponent implements OnInit{
 
     ngOnInit(): void {
         this.linksApiService.get(this.appStorageService.linksId).subscribe(
-            data => this.linkData = data,
+            data => {
+                this.linkData = data
+                console.log('Init: ', this.linkData)
+            },
             error => console.log(error),
         )
         this.user = this.appStorageService.user

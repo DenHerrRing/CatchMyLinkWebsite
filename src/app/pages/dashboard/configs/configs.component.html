@@ -76,7 +76,7 @@
 
 
             <div class="card-actions justify-end">
-                <button class="btn">Speichern</button>
+                <button class="btn" [ngClass]="{'loading': showLoading}" (click)="onClickSaveUser()">Speichern</button>
             </div>
         </div>
     </div>
