@@ -5,6 +5,8 @@ import {LinksApiService} from "../../../shared/api/links-api.service";
 import {AppStorageService} from "../../../shared/services/app-storage.service";
 import {LinkData} from "../../../shared/models/link-data";
 import {UserResponse} from "../../../shared/models/api/responses/user.response";
+import {UsersApiService} from "../../../shared/api/users-api.service";
+import {ToastService} from "../../../shared/services/toast.service";
 
 @Component({
   selector: 'app-configs',
@@ -19,9 +21,27 @@ export class ConfigsComponent implements OnInit{
     // TODO: Wenn der User geändert wird, muss dieser in UserResponse gespeichert werden! Genauso das Passwort, welches geändert wird!
 
     showLoading: boolean = false
-    constructor(private linksApiService: LinksApiService,
-                private appStorageService: AppStorageService) {
 
+    showChangePasswordButtonLoading: boolean = false
+    constructor(private linksApiService: LinksApiService,
+                private usersApiService: UsersApiService,
+                private appStorageService: AppStorageService,
+                private toastService: ToastService) {
+
+    }
+
+    onClickChangePassword(): void {
+        this.showChangePasswordButtonLoading = true
+        this.usersApiService.changePassword(this.user.email).subscribe(
+            () => {
+                this.toastService.showSuccessToast('Du hast eine Email erhalten, mit welcher du dein Password ändern / zurücksetzen kannst!')
+                this.showChangePasswordButtonLoading = false
+            },
+            error => {
+                console.log(error)
+                this.showChangePasswordButtonLoading = false
+            }
+        )
     }
 
     onClickSave(): void {

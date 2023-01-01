@@ -49,7 +49,12 @@ export class AppStorageService {
                         localStorage.setItem('userId', data.record.id as string)
                         resolve(true);
                     },
-                    error => console.log(error)
+                    error => {
+                        if (error.status === 401) {
+                            this.logout()
+                        }
+                        console.log(error)
+                    }
                 )
             } else {
                 resolve(false);

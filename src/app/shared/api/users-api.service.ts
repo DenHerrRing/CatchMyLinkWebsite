@@ -30,4 +30,8 @@ export class UsersApiService {
     getVerification(email: string):Observable<null> {
         return this.httpClient.post<null>(`${this.dbUrl}/request-verification`, {email: email})
     }
+
+    changePassword(email: string): Observable<any> {
+        return this.httpClient.post<any>(`${this.dbUrl}/request-password-reset`, {email: email})
+    }
 }
