@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {map, Observable} from "rxjs";
 import {UserResponse} from "../models/api/responses/user.response";
@@ -45,5 +45,11 @@ export class LinksApiService {
 
     update(linksDataId: string, linkData: LinkData): Observable<any> {
         return this.httpClient.patch<UserResponse>(`${this.dbUrl}/${linksDataId}`, {username: linkData.config?.username, data: linkData})
+    }
+
+    uploadFile(linksDataId: string, data: FormData): Observable<any> {
+        let headers = new HttpHeaders();
+        headers = headers.append('enctype', 'multipart/form-data');
+        return this.httpClient.patch<UserResponse>(`${this.dbUrl}/${linksDataId}`, data, {headers: headers})
     }
 }

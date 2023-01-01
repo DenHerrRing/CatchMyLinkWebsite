@@ -5,6 +5,7 @@
         <div class="card-body">
             <h2 class="card-title">Profil</h2>
             <p>Hier kannst du deine Profildaten ändern.</p>
+
             <form>
                 <div class="form-control w-full">
                     <label class="label">
@@ -18,15 +19,20 @@
                     </label>
                     <input type="text" placeholder="Doe" class="input input-bordered w-full max-w-xs" [(ngModel)]="linkData.config.lastName" name="lastName"/>
                 </div>
-                <div class="form-control w-full">
-                    <label class="label">
-                        <span class="label-text">Username</span>
-                    </label>
-                    <input type="text" placeholder="DenHerrRing" class="input input-bordered w-full max-w-xs" maxlength="160" [(ngModel)]="linkData.config.username" name="username" />
-                </div>
             </form>
 
-
+            <div class="form-control w-full max-w-xs">
+                <label class="label">
+                    <span class="label-text">Profilbild</span>
+                </label>
+                <input type="file" class="file-input file-input-bordered w-full max-w-xs"
+                       (change)="onChangeProfilePicture($event)"
+                       name="profilePicture"/>
+                <label class="label">
+                    <span class="label-text-alt">jpeg, png</span>
+                    <span class="label-text-alt">max 1 MB</span>
+                </label>
+            </div>
 
             <div class="card-actions justify-end">
                 <button class="btn" [ngClass]="{'loading': showLoading}" (click)="onClickSaveProfile()">Speichern</button>

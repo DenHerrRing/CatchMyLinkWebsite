@@ -6,6 +6,8 @@ export class LinkResponse {
     created!: string
     data!: LinkData
     id!: string
+
+    profilePicture?: File
     updated!: string
     user!: string
 }
