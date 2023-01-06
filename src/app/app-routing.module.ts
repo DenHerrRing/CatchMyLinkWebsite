@@ -1,16 +1,14 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes, UrlSegment} from '@angular/router';
 import {AuthGuard} from "./shared/guards/auth.guard";
-import {LinksDataResolver} from "./shared/resolvers/links-data.resolver";
 
 const routes: Routes = [
     {
         path: 'dashboard',
         canActivate: [AuthGuard],
-        // resolve: {
-        //     linksData: LinksDataResolver
-        // },
-        loadComponent: () => import('./pages/dashboard/dashboard.component').then(mod => mod.DashboardComponent)
+        canActivateChild: [AuthGuard],
+        loadComponent: () => import('./pages/dashboard/dashboard.component').then(mod => mod.DashboardComponent),
+        loadChildren: () => import('./pages/dashboard/dashboard.route').then(mod => mod.DASHBOARD_ROUTES)
     },
     {path: 'login', loadComponent: () => import('./pages/login/login.component').then(mod => mod.LoginComponent)},
     {path: 'signup', loadComponent: () => import('./pages/sign-up/sign-up.component').then(mod => mod.SignUpComponent)},

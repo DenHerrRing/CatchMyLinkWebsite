@@ -10,11 +10,11 @@ import {DesignComponent} from "./design/design.component";
 import {StatsComponent} from "./stats/stats.component";
 import {ConfigsComponent} from "./configs/configs.component";
 import {UsersApiService} from "../../shared/api/users-api.service";
-
+import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 @Component({
     selector: 'app-dashboard',
     standalone: true,
-    imports: [CommonModule, FooterComponent, NavigationComponent, MockPhoneComponent, LinksComponent, ToastComponent, DesignComponent, StatsComponent, ConfigsComponent],
+    imports: [CommonModule, FooterComponent, NavigationComponent, MockPhoneComponent, LinksComponent, ToastComponent, DesignComponent, StatsComponent, ConfigsComponent, RouterLink, RouterOutlet, RouterLinkActive],
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.css']
 })

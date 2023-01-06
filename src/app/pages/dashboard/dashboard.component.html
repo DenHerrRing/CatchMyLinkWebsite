@@ -1,6 +1,6 @@
 <div class="flex flex-col h-screen">
-    <app-navigation></app-navigation>
 
+    <app-navigation></app-navigation>
 
     <div class="flex my-3 ml-10">
         <div class="alert shadow-lg w-1/2" *ngIf="appStorage.user.verified !== true">
@@ -39,28 +39,21 @@
 
         <div class="flex-grow card bg-base-300 p-10 lg:mr-8">
             <div class="tabs pl-4">
-                <a class="tab tab-lg tab-lifted" [ngClass]="{'tab-active': tabLinksActive}"
-                   (click)="onClickLinksTab()">Links</a>
-                <a class="tab tab-lg tab-lifted" [ngClass]="{'tab-active': tabDesignActive}"
-                   (click)="onClickDesignTab()">Design</a>
-<!--                <a class="tab tab-lg tab-lifted" [ngClass]="{'tab-active': tabStatsActive}" -->
-<!--                   (click)="onClickStatsTab()">Stats</a>-->
-                <a class="tab tab-lg tab-lifted" [ngClass]="{'tab-active': tabSettingsActive}"
-                   (click)="onClickSettingsTab()">Einstellungen</a>
+                <a routerLink="links" routerLinkActive="tab-active" class="tab tab-lg tab-lifted">
+                    Links
+                </a>
+                <a routerLink="design" routerLinkActive="tab-active" class="tab tab-lg tab-lifted">
+                    Design
+                </a>
+<!--                <a routerLink="stats" routerLinkActive="tab-active" class="tab tab-lg tab-lifted">-->
+<!--                    Statistiken-->
+<!--                </a>-->
+                <a routerLink="config" routerLinkActive="tab-active" class="tab tab-lg tab-lifted">
+                    Einstellungen
+                </a>
             </div>
             <div class="card bg-base-100 shadow-xl flex-grow">
-                <ng-container *ngIf="tabLinksActive">
-                    <app-links></app-links>
-                </ng-container>
-                <ng-container *ngIf="tabDesignActive">
-                    <app-design></app-design>
-                </ng-container>
-                <ng-container *ngIf="tabStatsActive">
-                    <app-stats></app-stats>
-                </ng-container>
-                <ng-container *ngIf="tabSettingsActive">
-                    <app-configs></app-configs>
-                </ng-container>
+                <router-outlet></router-outlet>
             </div>
         </div>
 
