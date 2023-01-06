@@ -9,4 +9,5 @@ export const DASHBOARD_ROUTES: Route[] = [
     { path: 'design', component: DesignComponent },
     { path: 'stats', component: StatsComponent },
     { path: 'config', component: ConfigsComponent },
+    {path: '**', redirectTo: 'links'},
 ]
