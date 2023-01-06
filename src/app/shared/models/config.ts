@@ -6,4 +6,5 @@ export class Config {
     seoTitle: string = ''
     seoDescription: string = ''
     nsfw :boolean = false
+    footerText: string = ''
 }

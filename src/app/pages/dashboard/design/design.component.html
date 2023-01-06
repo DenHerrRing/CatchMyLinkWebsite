@@ -40,4 +40,26 @@
         </div>
     </div>
 
+    <div class="card w-full bg-base-100 shadow-xl">
+        <div class="card-body">
+            <h2 class="card-title">Footer Text</h2>
+            <p>Hier kannst du dein persönlichen Footer Text ändern.</p>
+
+            <form>
+                <div class="form-control w-full">
+                    <label class="label">
+                        <span class="label-text">Footer Text</span>
+                    </label>
+                    <input type="text" placeholder="Footer Text (max 40 Zeichen)" class="input input-bordered w-full max-w-xs" maxlength="40" [(ngModel)]="linkData.config.footerText" name="footerText"/>
+                    <label class="label">
+                        <span class="label-text-alt">{{linkData.config.footerText.length}} / 40 Zeichen</span>
+                    </label>
+                </div>
+            </form>
+
+            <div class="card-actions justify-end">
+                <button class="btn" [ngClass]="{'loading': showLoading}" (click)="onClickSaveFooter()">Speichern</button>
+            </div>
+        </div>
+    </div>
 </div>

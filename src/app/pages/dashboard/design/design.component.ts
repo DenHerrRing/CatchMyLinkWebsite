@@ -29,6 +29,17 @@ export class DesignComponent implements OnInit {
 
     }
 
+    onClickSaveFooter(): void{
+        this.showLoading = true
+        this.linksApiService.update(this.appStorageService.linksId, this.linkData).subscribe(
+            () => this.showLoading = false,
+            error => {
+                console.log(error)
+                this.showLoading = false
+            }
+        )
+        this.appStorageService.emitChangesOnLinkData.next(this.linkData)
+    }
     onClickSaveProfile(): void {
         this.showLoading = true
         this.linksApiService.update(this.appStorageService.linksId, this.linkData).subscribe(
