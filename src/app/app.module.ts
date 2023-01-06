@@ -7,6 +7,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "./shared/interceptors/AuthInterceptor";
 import {AppStorageService} from "./shared/services/app-storage.service";
 import {ClipboardModule} from "ngx-clipboard";
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 export function appProviderFactory(appStorageService: AppStorageService) {
     return () => appStorageService.load();
@@ -17,6 +18,7 @@ export function appProviderFactory(appStorageService: AppStorageService) {
         AppComponent
     ],
     imports: [
+        DragDropModule,
         ClipboardModule,
         BrowserModule,
         HttpClientModule,

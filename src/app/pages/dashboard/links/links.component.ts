@@ -9,11 +9,21 @@ import {LinksApiService} from "../../../shared/api/links-api.service";
 import {AppStorageService} from "../../../shared/services/app-storage.service";
 import {EditLinkModalComponent} from "./edit-link-modal/edit-link-modal.component";
 import {EditSocialModalComponent} from "./edit-social-modal/edit-social-modal.component";
+import {
+    CdkDrag,
+    CdkDragDrop,
+    CdkDragHandle,
+    CdkDragPlaceholder,
+    CdkDragPreview,
+    CdkDropList,
+    CdkDropListGroup,
+    moveItemInArray
+} from "@angular/cdk/drag-drop";
 
 @Component({
     selector: 'app-links',
     standalone: true,
-    imports: [CommonModule, AddLinkModalComponent, AddSocialModalComponent, EditLinkModalComponent, EditSocialModalComponent],
+    imports: [CommonModule, AddLinkModalComponent, AddSocialModalComponent, EditLinkModalComponent, EditSocialModalComponent, CdkDropList, CdkDragPreview, CdkDrag, CdkDragHandle, CdkDropListGroup, CdkDragPlaceholder],
     templateUrl: './links.component.html',
     styleUrls: ['./links.component.css']
 })
@@ -30,6 +40,24 @@ export class LinksComponent implements OnInit {
                 private appStorageService: AppStorageService) {
     }
 
+    hoverListItem(item: Link | Social):void {
+        item.isHovered = ! item.isHovered
+    }
+
+    onDropLink(event: CdkDragDrop<Link[]>) {
+        moveItemInArray(this.linkData.links, event.previousIndex, event.currentIndex);
+        this.appStorageService.emitChangesOnLinkData.next(this.linkData)
+    }
+
+    onDropStart(item: Link|Social) {
+        item.isHovered = false
+    }
+
+    onDropSocial(event: CdkDragDrop<Social[]>) {
+        moveItemInArray(this.linkData.socials, event.previousIndex, event.currentIndex);
+        this.appStorageService.emitChangesOnLinkData.next(this.linkData)
+    }
+
     onClickAddLink(): void {
         this.showAddLinkModal = true;
     }
@@ -39,6 +67,15 @@ export class LinksComponent implements OnInit {
         this.showEditLinkModal = true;
     }
 
+    onClickDeleteLink(link: Link): void {
+        this.linkData.links = this.linkData.links.filter(element => {
+            return element.url !== link.url
+        })
+        this.linksApiService.update(this.appStorageService.linksId, this.linkData).subscribe(
+            () => this.appStorageService.emitChangesOnLinkData.next(this.linkData)
+        )
+    }
+
     onClickEditSocial(social: Social): void {
         this.selectedSocial = social;
         this.showEditSocialModal = true;
@@ -46,6 +83,15 @@ export class LinksComponent implements OnInit {
 
     onClickAddSocial(): void {
         this.showAddSocialModal = true;
+    }
+
+    onClickDeleteSocial(social: Social): void {
+        this.linkData.socials = this.linkData.socials.filter(element => {
+            return element.name !== social.name
+        })
+        this.linksApiService.update(this.appStorageService.linksId, this.linkData).subscribe(
+            () => this.appStorageService.emitChangesOnLinkData.next(this.linkData)
+        )
     }
 
     onEmitCloseAddLinkModal(value: boolean): void {

@@ -11,15 +11,23 @@
 
     <div class="divider">Links</div>
 
-    <div class="flex flex-col">
+    <div class="flex flex-col" cdkDropList (cdkDropListDropped)="onDropLink($event)">
         <ng-container *ngFor="let link of linkData.links">
-            <div class="grid flex-grow mb-3">
-                <div class="rounded border-1 border-solid border-black p-2 flex shadow-lg">
-                    <div class="flex-auto" (click)="onClickEditLink(link)">
+            <div class="grid flex-grow mb-3"
+                 (mouseenter)="hoverListItem(link)"
+                 (mouseleave)="hoverListItem(link)">
+                <div class="rounded border-1 border-solid border-black p-2 flex shadow-lg"
+                     [ngClass]="{'card-side': link.isHovered}"
+                     cdkDrag (cdkDragStarted)="onDropStart(link)">
+                    <figure *ngIf="link.isHovered" class="mr-2">
+                        <img class="btn btn-square btn-ghost p-2" src="./assets/icons/recycle-bin.png" alt="Album" (click)="onClickDeleteLink(link)"/>
+                    </figure>
+                    <div class="flex-auto"
+                         (click)="onClickEditLink(link)">
                         <h3 class="card-title">{{link.title}}</h3>
                         <p>{{link.url}}</p>
                     </div>
-                    <div class="grid flex-col place-items-center">
+                    <div class="grid flex-col place-items-center" cdkDragHandle>
                         <svg class="w-10 h-6" viewBox="0 0 14 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="2.5" cy="2.5" r="2.5" fill="#CFCED3"></circle>
                             <circle cx="2.5" cy="9.5" r="2.5" fill="#CFCED3"></circle>
@@ -30,38 +38,39 @@
                         </svg>
                     </div>
                 </div>
-
             </div>
         </ng-container>
     </div>
 
     <div class="divider">Socials</div>
 
-    <div class="flex flex-col">
+    <div class="flex flex-col" cdkDropList (cdkDropListDropped)="onDropSocial($event)">
         <ng-container *ngFor="let social of linkData.socials">
-            <div class="grid flex-grow mb-3">
-                <div class="rounded border-1 border-solid border-black p-2 flex shadow-lg">
-                    <ng-container>
-                        <div class="mx-auto mr-3" (click)="onClickEditSocial(social)">
-                            <img class="w-12 h-12" alt="Social Icon" [src]="social.iconUrl"/>
-                        </div>
-                        <div class="flex-auto" (click)="onClickEditSocial(social)">
-                            <h3 class="card-title">{{social.name}}</h3>
-                            <p>{{getSocialUrl(social.preUrl, social.accountUrl)}}</p>
-                        </div>
-                    </ng-container>
-                    <ng-container>
-                        <div class="grid flex-col place-items-center">
-                            <svg class="w-10 h-6" viewBox="0 0 14 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="2.5" cy="2.5" r="2.5" fill="#CFCED3"></circle>
-                                <circle cx="2.5" cy="9.5" r="2.5" fill="#CFCED3"></circle>
-                                <circle cx="2.5" cy="16.5" r="2.5" fill="#CFCED3"></circle>
-                                <circle cx="10.6328" cy="2.5" r="2.5" fill="#CFCED3"></circle>
-                                <circle cx="10.6328" cy="9.5" r="2.5" fill="#CFCED3"></circle>
-                                <circle cx="10.6328" cy="16.5" r="2.5" fill="#CFCED3"></circle>
-                            </svg>
-                        </div>
-                    </ng-container>
+            <div class="grid flex-grow mb-3"
+                 (mouseenter)="hoverListItem(social)"
+                 (mouseleave)="hoverListItem(social)">
+                <div class="rounded border-1 border-solid border-black p-2 flex shadow-lg" cdkDrag [ngClass]="{'card-side': social.isHovered}" (cdkDragStarted)="onDropStart(social)">
+                    <figure *ngIf="social.isHovered" class="mr-2">
+                        <img class="btn btn-square btn-ghost p-2" src="./assets/icons/recycle-bin.png" alt="Album" (click)="onClickDeleteSocial(social)"/>
+                    </figure>
+                    <div class="mx-auto mr-3"
+                         (click)="onClickEditSocial(social)">
+                        <img *ngIf="!social.isHovered" class="w-12 h-12" alt="Social Icon" [src]="social.iconUrl"/>
+                    </div>
+                    <div class="flex-auto" (click)="onClickEditSocial(social)">
+                        <h3 class="card-title">{{social.name}}</h3>
+                        <p>{{getSocialUrl(social.preUrl, social.accountUrl)}}</p>
+                    </div>
+                    <div class="grid flex-col place-items-center" cdkDragHandle>
+                        <svg class="w-10 h-6" viewBox="0 0 14 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="2.5" cy="2.5" r="2.5" fill="#CFCED3"></circle>
+                            <circle cx="2.5" cy="9.5" r="2.5" fill="#CFCED3"></circle>
+                            <circle cx="2.5" cy="16.5" r="2.5" fill="#CFCED3"></circle>
+                            <circle cx="10.6328" cy="2.5" r="2.5" fill="#CFCED3"></circle>
+                            <circle cx="10.6328" cy="9.5" r="2.5" fill="#CFCED3"></circle>
+                            <circle cx="10.6328" cy="16.5" r="2.5" fill="#CFCED3"></circle>
+                        </svg>
+                    </div>
                 </div>
 
             </div>

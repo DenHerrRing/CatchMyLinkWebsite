@@ -5,4 +5,5 @@ export class Social {
     placeholder!: string
     iconUrl!: string
     iconColor!: string
+    isHovered: boolean = false
 }
