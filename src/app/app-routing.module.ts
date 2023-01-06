@@ -10,6 +10,7 @@ const routes: Routes = [
         loadComponent: () => import('./pages/dashboard/dashboard.component').then(mod => mod.DashboardComponent),
         loadChildren: () => import('./pages/dashboard/dashboard.route').then(mod => mod.DASHBOARD_ROUTES)
     },
+    {path: 'qrcode', loadComponent: () => import('./pages/qr-code/qr-code.component').then(mod => mod.QrCodeComponent)},
     {path: 'login', loadComponent: () => import('./pages/login/login.component').then(mod => mod.LoginComponent)},
     {path: 'signup', loadComponent: () => import('./pages/sign-up/sign-up.component').then(mod => mod.SignUpComponent)},
     {

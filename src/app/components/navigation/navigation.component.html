@@ -1,9 +1,9 @@
-<div class="navbar bg-base-100">
+<div class="navbar bg-base-100 z-50">
     <div class="flex-1">
-        <img src="./assets/img/icon.png" class="h-10 w-auto"/>
+        <img src="./assets/img/icon.png" class="h-10 w-auto" alt=""/>
         <span class="normal-case text-xl font-bold ml-2">CatchMy.Link</span>
     </div>
-    <div class="flex-none">
+    <div class="flex-none z-50">
         <ul class="menu menu-horizontal px-1">
             <li>
                 <button class="btn btn-ghost" ngxClipboard [cbContent]="getLinkForCopy()"
@@ -20,8 +20,8 @@
                     </svg>
                 </a>
                 <ul class="p-2 bg-base-100">
-                    <li><a>Link kopieren</a></li>
-                    <li><a>QR code generieren</a></li>
+                    <li><a (click)="onClickCopyToClipboard()">Link kopieren</a></li>
+                    <li><a routerLink="../qrcode">QR code generieren</a></li>
                 </ul>
             </li>
             <li>
