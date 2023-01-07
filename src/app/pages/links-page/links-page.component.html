@@ -5,9 +5,9 @@
         </div>
         {{linkData.config.firstName}} {{linkData.config.lastName}}<br>
         {{linkData.config.username}}
-        <div class="flex flex-row my-6">
+        <div class="flex flex-row flex-wrap my-6 justify-center">
             <ng-container *ngFor="let social of linkData.socials">
-                <div class="w-10 h-10 mx-4">
+                <div class="w-10 h-10 mx-4 my-2">
                     <a [href]="getSocialUrl(social.preUrl, social.accountUrl)" target="_blank">
                         <img class="mask mask-circle" alt="Social Icon Bild" [src]="social.iconUrl"/>
                     </a>
