@@ -34,7 +34,6 @@ export class DesignComponent implements OnInit {
     }
 
     onClickSave(): void{
-        console.log(this.linkData.config.socialTop)
         this.showLoading = true
         this.linksApiService.update(this.appStorageService.linksId, this.linkData).subscribe(
             () => {

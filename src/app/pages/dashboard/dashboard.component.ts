@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
     tabSettingsActive: boolean = false;
 
     showVerifyNotification: boolean = false;
+    showWorkInProgressNotification: boolean = true;
     showLoadingButton: boolean = false;
 
     constructor(public appStorage: AppStorageService,
@@ -45,6 +46,10 @@ export class DashboardComponent implements OnInit {
                 this.showLoadingButton = false
             }
         )
+    }
+
+    onClickWorkInProgress(): void {
+        this.showWorkInProgressNotification = false
     }
 
     onClickLinksTab(): void {
