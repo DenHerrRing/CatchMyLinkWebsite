@@ -5,7 +5,7 @@
         </div>
         {{linkData.config.firstName}} {{linkData.config.lastName}}<br>
         {{linkData.config.username}}
-        <div class="flex flex-row flex-wrap my-6 justify-center">
+        <div class="flex flex-row flex-wrap my-6 justify-center" *ngIf="linkData.config.socialTop">
             <ng-container *ngFor="let social of linkData.socials">
                 <div class="w-10 h-10 mx-4 my-2">
                     <a [href]="getSocialUrl(social.preUrl, social.accountUrl)" target="_blank">
@@ -22,6 +22,19 @@
             </div>
         </ng-container>
     </div>
+
+    <div class="grid card rounded-box place-items-center mt-4" *ngIf="!linkData.config.socialTop">
+        <div class="flex flex-row flex-wrap my-6 justify-center" >
+            <ng-container *ngFor="let social of linkData.socials">
+                <div class="w-10 h-10 mx-4 my-2">
+                    <a [href]="getSocialUrl(social.preUrl, social.accountUrl)" target="_blank">
+                        <img class="mask mask-circle" alt="Social Icon Bild" [src]="social.iconUrl"/>
+                    </a>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+
     <div class="grid h-20 card rounded-box place-items-center mt-4">
         {{linkData.config.footerText}}
     </div>

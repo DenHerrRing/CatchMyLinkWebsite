@@ -29,7 +29,7 @@ export class DesignComponent implements OnInit {
 
     }
 
-    onClickSaveFooter(): void{
+    onClickSave(): void{
         this.showLoading = true
         this.linksApiService.update(this.appStorageService.linksId, this.linkData).subscribe(
             () => this.showLoading = false,

@@ -7,4 +7,5 @@ export class Config {
     seoDescription: string = ''
     nsfw :boolean = false
     footerText: string = ''
+    socialTop: boolean = true
 }
