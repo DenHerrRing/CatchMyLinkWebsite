@@ -29,19 +29,28 @@ export class DesignComponent implements OnInit {
 
     }
 
+    updateLinkPage(): void {
+        this.appStorageService.emitChangesOnLinkData.next(this.linkData)
+    }
+
     onClickSave(): void{
+        console.log(this.linkData.config.socialTop)
         this.showLoading = true
         this.linksApiService.update(this.appStorageService.linksId, this.linkData).subscribe(
-            () => this.showLoading = false,
+            () => {
+                this.showLoading = false
+                this.updateLinkPage()
+            },
             error => {
                 console.log(error)
                 this.showLoading = false
             }
         )
-        this.appStorageService.emitChangesOnLinkData.next(this.linkData)
+
     }
     onClickSaveProfile(): void {
         this.showLoading = true
+
         this.linksApiService.update(this.appStorageService.linksId, this.linkData).subscribe(
             data => {
                 this.linkData = data.data
@@ -52,6 +61,7 @@ export class DesignComponent implements OnInit {
                     userData => {
                         this.appStorageService.user = userData
                         this.showLoading = false
+                        this.updateLinkPage()
                     }
                 )
             },
@@ -60,7 +70,6 @@ export class DesignComponent implements OnInit {
                 this.showLoading = false
             }
         )
-        this.appStorageService.emitChangesOnLinkData.next(this.linkData)
     }
 
     onChangeProfilePicture(event: any): void {

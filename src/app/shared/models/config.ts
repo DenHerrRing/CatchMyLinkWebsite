@@ -8,4 +8,5 @@ export class Config {
     nsfw :boolean = false
     footerText: string = ''
     socialTop: boolean = true
+    darkTheme: boolean = false
 }
