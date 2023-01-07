@@ -6,11 +6,12 @@ import {LinkData} from "../../shared/models/link-data";
 import {AppStorageService} from "../../shared/services/app-storage.service";
 import {UserResponse} from "../../shared/models/api/responses/user.response";
 import {LinksApiService} from "../../shared/api/links-api.service";
+import {SensitiveContentComponent} from "./sensitive-content/sensitive-content.component";
 
 @Component({
     selector: 'app-links-page',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, SensitiveContentComponent],
     templateUrl: './links-page.component.html',
     styleUrls: ['./links-page.component.css']
 })
@@ -22,6 +23,8 @@ export class LinksPageComponent implements OnInit {
 
     user!: UserResponse
 
+    showSensitiveModal: boolean = false
+
     constructor(private route: ActivatedRoute,
                 private linksApiService: LinksApiService,
                 private appStorageService: AppStorageService) {
@@ -30,6 +33,10 @@ export class LinksPageComponent implements OnInit {
                 this.linkData = next
             }
         )
+    }
+
+    onCloseSensitiveModal(value: boolean) {
+        this.showSensitiveModal = value
     }
 
     getSocialUrl(preUrl: string, accountUrl: string): string {
@@ -54,15 +61,19 @@ export class LinksPageComponent implements OnInit {
 
         if (this.appStorageService.isTokenSet()) {
             this.linksApiService.get(this.appStorageService.linksId).subscribe(
-                data => this.linkData = data,
+                data => {
+                    this.linkData = data
+                },
                 error => console.log(error)
             )
         } else {
             this.linksApiService.getByUserName(this.username).subscribe(
                 data => {
                     console.log(data)
-                    if (data)
+                    if (data) {
                         this.linkData = data
+                        this.showSensitiveModal = data.config.nsfw
+                    }
                 },
                 error => console.log(error)
             )
