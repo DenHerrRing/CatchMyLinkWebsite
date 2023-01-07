@@ -21,6 +21,10 @@ export class NavigationComponent {
         this.toastService.showSuccessToast('Dein Link wurde in die Zwischenablage kopiert!')
     }
 
+    onClickShowQrCodeModal(): void {
+        this.appStorageService.showQrCodeModal = true
+    }
+
     getLinkForCopy(): string {
         return `https://catchmy.link/@${this.appStorageService.user.username}`
     }

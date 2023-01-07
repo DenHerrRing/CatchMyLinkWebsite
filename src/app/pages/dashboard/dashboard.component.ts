@@ -11,10 +11,11 @@ import {StatsComponent} from "./stats/stats.component";
 import {ConfigsComponent} from "./configs/configs.component";
 import {UsersApiService} from "../../shared/api/users-api.service";
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
+import {QrCodeComponent} from "../../components/qr-code-modal/qr-code.component";
 @Component({
     selector: 'app-dashboard',
     standalone: true,
-    imports: [CommonModule, FooterComponent, NavigationComponent, MockPhoneComponent, LinksComponent, ToastComponent, DesignComponent, StatsComponent, ConfigsComponent, RouterLink, RouterOutlet, RouterLinkActive],
+    imports: [CommonModule, FooterComponent, NavigationComponent, MockPhoneComponent, LinksComponent, ToastComponent, DesignComponent, StatsComponent, ConfigsComponent, RouterLink, RouterOutlet, RouterLinkActive, QrCodeComponent],
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.css']
 })
@@ -72,6 +73,10 @@ export class DashboardComponent implements OnInit {
         this.tabDesignActive = false;
         this.tabStatsActive = false;
         this.tabSettingsActive = true;
+    }
+
+    onEmitCloseQrCodeModal(value: boolean) {
+        this.appStorage.showQrCodeModal = value
     }
 
     ngOnInit(): void {

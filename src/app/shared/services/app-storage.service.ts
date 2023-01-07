@@ -15,6 +15,8 @@ export class AppStorageService {
 
     emitChangesOnLinkData: Subject<LinkData> = new Subject<LinkData>()
 
+    showQrCodeModal: boolean = false
+
     constructor(private authService: AuthApiService) {
         console.log('Create AppStorageService')
     }
