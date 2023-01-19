@@ -7,6 +7,7 @@ import {AppStorageService} from "../../shared/services/app-storage.service";
 import {UserResponse} from "../../shared/models/api/responses/user.response";
 import {LinksApiService} from "../../shared/api/links-api.service";
 import {SensitiveContentComponent} from "./sensitive-content/sensitive-content.component";
+import {ToastService} from "../../shared/services/toast.service";
 
 @Component({
     selector: 'app-links-page',
@@ -27,7 +28,8 @@ export class LinksPageComponent implements OnInit {
 
     constructor(private route: ActivatedRoute,
                 private linksApiService: LinksApiService,
-                private appStorageService: AppStorageService) {
+                private appStorageService: AppStorageService,
+                private toastService: ToastService) {
         this.appStorageService.emitChangesOnLinkData.subscribe(
             next =>{
                 this.linkData = next
@@ -64,18 +66,17 @@ export class LinksPageComponent implements OnInit {
                 data => {
                     this.linkData = data
                 },
-                error => console.log(error)
+                error => this.toastService.showErrorToast(error.error.message)
             )
         } else {
             this.linksApiService.getByUserName(this.username).subscribe(
                 data => {
-                    console.log(data)
                     if (data) {
                         this.linkData = data
                         this.showSensitiveModal = data.config.nsfw
                     }
                 },
-                error => console.log(error)
+                error => this.toastService.showErrorToast(error.error.message)
             )
 
         }

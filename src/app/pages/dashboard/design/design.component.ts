@@ -41,7 +41,7 @@ export class DesignComponent implements OnInit {
                 this.updateLinkPage()
             },
             error => {
-                console.log(error)
+                this.toastService.showErrorToast(error.error.message)
                 this.showLoading = false
             }
         )
@@ -65,7 +65,7 @@ export class DesignComponent implements OnInit {
                 )
             },
             error => {
-                console.log(error)
+                this.toastService.showErrorToast(error.error.message)
                 this.showLoading = false
             }
         )
@@ -73,7 +73,6 @@ export class DesignComponent implements OnInit {
 
     onChangeProfilePicture(event: any): void {
         // TODO: Es muss geprüft werden, ob der richtige Dateityp und die richtige Dateigröße gewählt wurde!
-        console.log('Select new Picture: ', event.target.files)
 
         // const mimetypes = ['image/jpg', 'image/jpeg', 'image/png', 'image/svg+xml', 'image/gif']
         let file = event.target.files[0]
@@ -91,11 +90,11 @@ export class DesignComponent implements OnInit {
                         this.appStorageService.emitChangesOnLinkData.next(this.linkData)
                         this.toastService.showSuccessToast('Du hast dein Profilbild erfolgreich geändert!')
                     }, error => {
-                        console.log(error)
+                        this.toastService.showErrorToast(error.error.message)
                     }
                 )
             }, error =>  {
-                console.log(error)
+                this.toastService.showErrorToast(error.error.message)
             }
         )
 
@@ -107,7 +106,7 @@ export class DesignComponent implements OnInit {
     ngOnInit(): void {
         this.linksApiService.get(this.appStorageService.linksId).subscribe(
             data => this.linkData = data,
-            error => console.log(error)
+            error => this.toastService.showErrorToast(error.error.message)
         )
         this.user = this.appStorageService.user
     }

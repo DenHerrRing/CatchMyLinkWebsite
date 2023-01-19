@@ -68,7 +68,7 @@ export class SignUpComponent implements OnInit {
                         this.router.navigate(['login'], {queryParams: {'username': this.newUser.username}})
                     },
                     error => {
-                        console.log(error)
+                        this.toastService.showErrorToast(error.error.message)
                         this.loading = false
                     }
                 )

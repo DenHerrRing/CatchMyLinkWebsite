@@ -38,7 +38,7 @@ export class ConfigsComponent implements OnInit{
                 this.showChangePasswordButtonLoading = false
             },
             error => {
-                console.log(error)
+                this.toastService.showErrorToast(error.error.message)
                 this.showChangePasswordButtonLoading = false
             }
         )
@@ -47,17 +47,16 @@ export class ConfigsComponent implements OnInit{
     onClickSaveUser():void {
         // TODO: Diese Funktionalität muss noch überdacht werden!
         return
-        this.showLoading = true
-        this.usersApiService.update(this.user).subscribe(
-            userData => {
-                console.log(userData)
-                this.showLoading = false
-            },
-            error => {
-                console.log('Error while update User:, ', error)
-                this.showLoading = false
-            }
-        )
+        // this.showLoading = true
+        // this.usersApiService.update(this.user).subscribe(
+        //     () => {
+        //         this.showLoading = false
+        //     },
+        //     error => {
+        //         this.toastService.showErrorToast(error.error.message)
+        //         this.showLoading = false
+        //     }
+        // )
     }
 
     onClickSave(): void {
@@ -68,7 +67,7 @@ export class ConfigsComponent implements OnInit{
                 this.showLoading = false
             },
             error => {
-                console.log(error)
+                this.toastService.showErrorToast(error.error.message)
                 this.showLoading = false
             }
         )
@@ -84,9 +83,8 @@ export class ConfigsComponent implements OnInit{
         this.linksApiService.get(this.appStorageService.linksId).subscribe(
             data => {
                 this.linkData = data
-                console.log('Init: ', this.linkData)
             },
-            error => console.log(error),
+            error => this.toastService.showErrorToast(error.error.message)
         )
         this.user = this.appStorageService.user
     }

@@ -3,6 +3,7 @@ import {UserResponse} from "../models/api/responses/user.response";
 import {AuthApiService} from "../api/auth-api.service";
 import {Subject} from "rxjs";
 import {LinkData} from "../models/link-data";
+import {ToastService} from "./toast.service";
 
 @Injectable({
     providedIn: 'root'
@@ -17,9 +18,8 @@ export class AppStorageService {
 
     showQrCodeModal: boolean = false
 
-    constructor(private authService: AuthApiService) {
-        console.log('Create AppStorageService')
-    }
+    constructor(private authService: AuthApiService,
+                private toastService: ToastService) {}
 
     async logout(): Promise<void> {
         try {
@@ -27,7 +27,7 @@ export class AppStorageService {
             this.user = new UserResponse();
             localStorage.clear();
         } catch (e) {
-            console.log(e);
+            this.toastService.showErrorToast('Error while Logout')
         } finally {
             window.location.reload();
         }
@@ -55,7 +55,7 @@ export class AppStorageService {
                         if (error.status === 401) {
                             this.logout()
                         }
-                        console.log(error)
+                        this.toastService.showErrorToast(error.error.message)
                     }
                 )
             } else {

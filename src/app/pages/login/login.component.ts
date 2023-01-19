@@ -36,8 +36,6 @@ export class LoginComponent implements OnInit {
 
         this.authService.authWithPassword(this.identity, this.password).subscribe(
             data => {
-                console.log(data)
-
                 if (data.record.links === '') {
                     // Create Links Data first time!
                     let linkData = new LinkData()
@@ -53,7 +51,7 @@ export class LoginComponent implements OnInit {
                         linksApiData => {
                             data.record.links = linksApiData.id
                             this.usersApiService.addLinks(data.record.id, linksApiData.id, data.token).subscribe(
-                                usersData => {
+                                () => {
                                     this.appStorageService.token = data.token
                                     this.appStorageService.user = data.record
                                     this.appStorageService.linksId = data.record.links as string
@@ -63,12 +61,12 @@ export class LoginComponent implements OnInit {
                                     this.router.navigate(['dashboard'])
                                 },
                                 error => {
-                                    console.log('usersApiService error: ', error)
+                                    this.toastService.showErrorToast(error.error.message)
                                 }
                             )
                         },
                         error => {
-                            console.log('linksApiData error: ', error)
+                            this.toastService.showErrorToast(error.error.message)
                         }
                     )
                 } else {
@@ -82,7 +80,6 @@ export class LoginComponent implements OnInit {
                 }
             },
             error => {
-                console.log(error)
                 this.toastService.showErrorToast(error.error.message)
                 this.loading = false
             }

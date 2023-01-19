@@ -19,6 +19,7 @@ import {
     CdkDropListGroup,
     moveItemInArray
 } from "@angular/cdk/drag-drop";
+import {ToastService} from "../../../shared/services/toast.service";
 
 @Component({
     selector: 'app-links',
@@ -37,7 +38,8 @@ export class LinksComponent implements OnInit {
     showEditSocialModal: boolean = false;
 
     constructor(private linksApiService: LinksApiService,
-                private appStorageService: AppStorageService) {
+                private appStorageService: AppStorageService,
+                private toastService: ToastService) {
     }
 
     hoverListItem(item: Link | Social):void {
@@ -144,14 +146,14 @@ export class LinksComponent implements OnInit {
             data => {
                 this.linkData = data.data
             },
-            error => console.log(error)
+            error => this.toastService.showErrorToast(error.error.message)
         )
     }
 
     ngOnInit(): void {
         this.linksApiService.get(this.appStorageService.linksId).subscribe(
             data => this.linkData = data,
-            error => console.log(error)
+            error => this.toastService.showErrorToast(error.error.message)
         )
     }
 }
