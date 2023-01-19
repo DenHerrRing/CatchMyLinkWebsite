@@ -22,7 +22,7 @@ export class IconService {
             'Facebook',
             'https://www.facebook.com/',
             'DenHerrRing',
-            'assets/icons/brands/png-512/facebook-512x512-2285009.png',
+            'assets/icons/brands/svg/facebook-2285009.svg',
             ''
         ))
 
@@ -30,7 +30,7 @@ export class IconService {
             'DEV',
             'https://dev.to/',
             'DenHerrRing',
-            'assets/icons/brands/png-512/dev-512x512-2285030.png',
+            'assets/icons/brands/svg/dev-2285030.svg',
             ''
         ))
 
@@ -38,7 +38,7 @@ export class IconService {
             'GitHub',
             'https://github.com/',
             'DenHerrRing',
-            'assets/icons/brands/png-512/github-512x512-2284999.png',
+            'assets/icons/brands/svg/github-2284999.svg',
             ''
         ))
 
@@ -46,7 +46,7 @@ export class IconService {
             'Discord',
             'discordapp.com/users/',
             'DenHerrRing',
-            'assets/icons/brands/png-512/discord-512x512-2285027.png',
+            'assets/icons/brands/svg/discord-2285027.svg',
             ''
         ))
 
@@ -54,7 +54,7 @@ export class IconService {
             'Ghost',
             'https://{account}.ghost.org/',
             'DenHerrRing',
-            'assets/icons/brands/png-512/ghost-512x512-2285002.png',
+            'assets/icons/brands/svg/ghost-2285002.svg',
             ''
         ))
 
@@ -62,7 +62,7 @@ export class IconService {
             'GitLab',
             'https://gitlab.com/',
             'DenHerrRing',
-            'assets/icons/brands/png-512/gitlab-512x512-2284998.png',
+            'assets/icons/brands/svg/gitlab-2284998.svg',
             ''
         ))
 
@@ -70,7 +70,7 @@ export class IconService {
             'Instagram',
             'https://www.instagram.com/',
             'DenHerrRing',
-            'assets/icons/brands/png-512/instagram-512x512-2284970.png',
+            'assets/icons/brands/svg/instagram-2284970.svg',
             ''
         ))
 
@@ -78,7 +78,7 @@ export class IconService {
             'LinkedIn',
             'https://www.linkedin.com/',
             'DenHerrRing',
-            'assets/icons/brands/png-512/linkedin-512x512-2284952.png',
+            'assets/icons/brands/svg/linkedin-2284952.svg',
             ''
         ))
 
@@ -86,7 +86,7 @@ export class IconService {
             'Medium',
             'https://medium.com/@',
             'DenHerrRing',
-            'assets/icons/brands/png-512/medium-512x512-2284941.png',
+            'assets/icons/brands/svg/medium-2284941.svg',
             ''
         ))
 
@@ -94,7 +94,7 @@ export class IconService {
             'Meetup',
             'https://www.meetup.com/members/',
             '214911037',
-            'assets/icons/brands/png-512/meetup-512x512-2284940.png',
+            'assets/icons/brands/svg/meetup-2284940.svg',
             ''
         ))
 
@@ -102,7 +102,7 @@ export class IconService {
             'Patreon',
             'https://www.patreon.com/',
             'DenHerrRing',
-            'assets/icons/brands/png-512/patreon-512x512-2284922.png',
+            'assets/icons/brands/svg/patreon-2284922.svg',
             ''
         ))
 
@@ -110,7 +110,7 @@ export class IconService {
             'PayPal',
             'https://paypal.me/',
             'denhering',
-            'assets/icons/brands/png-512/paypal-512x512-2284921.png',
+            'assets/icons/brands/svg/paypal-2284921.svg',
             ''
         ))
 
@@ -118,7 +118,7 @@ export class IconService {
             'reddit',
             'https://www.reddit.com/user/',
             'DenHerrRing',
-            'assets/icons/brands/png-512/reddit-512x512-2284905.png',
+            'assets/icons/brands/svg/reddit-2284905.svg',
             ''
         ))
 
@@ -126,7 +126,7 @@ export class IconService {
             'Spotify',
             'https://open.spotify.com/user/',
             'DenHerrRing',
-            'assets/icons/brands/png-512/spotify-512x512-2284885.png',
+            'assets/icons/brands/svg/spotify-2284885.svg',
             ''
         ))
 
@@ -134,7 +134,7 @@ export class IconService {
             'steam',
             'https://steamcommunity.com/id/',
             'DenHerrRing',
-            'assets/icons/brands/png-512/steam-512x512-2284881.png',
+            'assets/icons/brands/svg/steam-2284881.svg',
             ''
         ))
 
@@ -142,7 +142,7 @@ export class IconService {
             'Telegram',
             'https://t.me/',
             'DenHerrRing',
-            'assets/icons/brands/png-512/telegram-512x512-2284874.png',
+            'assets/icons/brands/svg/telegram-2284874.svg',
             ''
         ))
 
@@ -150,7 +150,7 @@ export class IconService {
             'tiktok',
             'https://www.tiktok.com/@',
             'DenHerrRing',
-            'assets/icons/brands/png-512/tiktok-512x512-2284872.png',
+            'assets/icons/brands/svg/tiktok-2284872.svg',
             ''
         ))
 
@@ -158,7 +158,7 @@ export class IconService {
             'twitch',
             'https://www.twitch.tv/',
             'mrcrunsh',
-            'assets/icons/brands/png-512/twitch-512x512-2284864.png',
+            'assets/icons/brands/svg/twitch-2284864.svg',
             ''
         ))
 
@@ -166,7 +166,7 @@ export class IconService {
             'Xing',
             'https://www.xing.com/profile/',
             'Dennis_Hering4',
-            'assets/icons/brands/png-512/xing-512x512-2284836.png',
+            'assets/icons/brands/svg/xing-2284836.svg',
             ''
         ))
 
@@ -174,7 +174,7 @@ export class IconService {
             'YouTube',
             'https://www.youtube.com/@',
             'DenHerrRing',
-            'assets/icons/brands/png-512/youtube-512x512-2284830.png',
+            'assets/icons/brands/svg/youtube-2284830.svg',
             ''
         ))
 
@@ -182,7 +182,7 @@ export class IconService {
             'twitter',
             'https://twitter.com/',
             'DenHerrRing',
-            'assets/icons/brands/png-512/twitter-512x512-2284863.png',
+            'assets/icons/brands/svg/twitter-2284863.svg',
             ''
         ))
 
@@ -193,7 +193,7 @@ export class IconService {
             'whatsapp',
             'https://t.me/',
             'DenHerrRing',
-            'assets/icons/brands/png-512/whatsapp-512x512-2284843.png',
+            'assets/icons/brands/svg/whatsapp-2284843.svg',
             ''
         ))
 
@@ -201,7 +201,7 @@ export class IconService {
             'trello',
             'https://t.me/',
             'DenHerrRing',
-            'assets/icons/brands/png-512/trello-512x512-2284870.png',
+            'assets/icons/brands/svg/trello-2284870.svg',
             ''
         ))
 
@@ -209,7 +209,7 @@ export class IconService {
             'wechat',
             'https://t.me/',
             'DenHerrRing',
-            'assets/icons/brands/png-512/wechat-512x512-2284845.png',
+            'assets/icons/brands/svg/wechat-2284845.svg',
             ''
         ))
 
@@ -217,7 +217,7 @@ export class IconService {
             'threema',
             'https://t.me/',
             'DenHerrRing',
-            'assets/icons/brands/png-512/threema-512x512-2284873.png',
+            'assets/icons/brands/svg/threema-2284873.svg',
             ''
         ))
 
@@ -225,7 +225,7 @@ export class IconService {
             'Signal',
             'https://www.reddit.com/user/',
             'DenHerrRing',
-            'assets/icons/brands/png-512/signal-512x512-2284892.png',
+            'assets/icons/brands/svg/signal-2284892.svg',
             ''
         ))
 
@@ -233,7 +233,7 @@ export class IconService {
             'Snapchat',
             'https://www.reddit.com/user/',
             'DenHerrRing',
-            'assets/icons/brands/png-512/snapchat-512x512-2284887.png',
+            'assets/icons/brands/svg/snapchat-2284887.svg',
             ''
         ))
 
