@@ -1,4 +1,4 @@
-import {HttpInterceptor, HttpRequest, HttpHandler} from '@angular/common/http';
+import {HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 
 export class AuthInterceptor implements HttpInterceptor {
 

@@ -31,7 +31,7 @@ export class LinksPageComponent implements OnInit {
                 private appStorageService: AppStorageService,
                 private toastService: ToastService) {
         this.appStorageService.emitChangesOnLinkData.subscribe(
-            next =>{
+            next => {
                 this.linkData = next
             }
         )
@@ -58,7 +58,6 @@ export class LinksPageComponent implements OnInit {
             .pipe(
                 map((params: ParamMap) => params.get('username'))
             ) as Observable<string>;
-
 
 
         if (this.appStorageService.isTokenSet()) {

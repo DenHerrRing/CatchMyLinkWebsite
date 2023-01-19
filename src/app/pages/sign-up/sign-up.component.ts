@@ -59,8 +59,8 @@ export class SignUpComponent implements OnInit {
         }
 
         this.loading = true
-        this.usersApiService.create(this.newUser).subscribe(
-            () => {
+        this.usersApiService.create(this.newUser).subscribe({
+            next: () => {
                 this.toastService.showSuccessToast('Dein Account wurde erstellt. Bitte melde dich an!')
                 this.usersApiService.getVerification(this.newUser.email).subscribe(
                     () => {
@@ -75,13 +75,12 @@ export class SignUpComponent implements OnInit {
 
                 this.loading = false
             },
-            error => {
+            error: error => {
                 this.alerts = error.error.data
                 this.toastService.showErrorToast(error.error.message)
                 this.loading = false
-            },
-            () => this.loading = false
-        )
+            }
+        })
     }
 
     ngOnInit(): void {

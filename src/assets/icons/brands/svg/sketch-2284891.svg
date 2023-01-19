@@ -1,1 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" fill="#fff" aria-label="Sketch" viewBox="0 0 512 512"><rect width="512" height="512" rx="15%"/><path fill="#ec6c00" d="M457 205 257 437 57 205"/><path fill="#ffae00" d="M370 88 457 205 376 205 257 437 138 205 57 205 144 88"/><path fill="#fed305" d="M257 76 370 88 376 205 138 205 144 88"/><path fill="#ffefB4" d="M257 76 376 205 138 205"/></svg>
+<svg aria-label="Sketch" fill="#fff" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+    <rect height="512" rx="15%" width="512"/>
+    <path d="M457 205 257 437 57 205" fill="#ec6c00"/>
+    <path d="M370 88 457 205 376 205 257 437 138 205 57 205 144 88" fill="#ffae00"/>
+    <path d="M257 76 370 88 376 205 138 205 144 88" fill="#fed305"/>
+    <path d="M257 76 376 205 138 205" fill="#ffefB4"/>
+</svg>

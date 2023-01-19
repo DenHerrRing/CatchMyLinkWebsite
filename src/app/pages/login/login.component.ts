@@ -34,8 +34,8 @@ export class LoginComponent implements OnInit {
     onClickSubmit(): void {
         this.loading = true
 
-        this.authService.authWithPassword(this.identity, this.password).subscribe(
-            data => {
+        this.authService.authWithPassword(this.identity, this.password).subscribe({
+            next: data => {
                 if (data.record.links === '') {
                     // Create Links Data first time!
                     let linkData = new LinkData()
@@ -79,17 +79,16 @@ export class LoginComponent implements OnInit {
                     this.router.navigate(['dashboard'])
                 }
             },
-            error => {
+            error: error => {
                 this.toastService.showErrorToast(error.error.message)
                 this.loading = false
             }
-        )
+        })
     }
 
     ngOnInit(): void {
         this.identity = '';
         this.password = '';
-
         this.route.queryParams.subscribe((params) => {
             this.identity = params['username']
         })

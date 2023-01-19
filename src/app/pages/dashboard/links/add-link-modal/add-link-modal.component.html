@@ -1,4 +1,4 @@
-<div class="modal" [ngClass]="{'modal-open': showModal}">
+<div [ngClass]="{'modal-open': showModal}" class="modal">
     <div class="modal-box">
         <h3 class="font-bold text-lg">Hier kannst du einen neuen Link anlegen</h3>
         <form class="w-full">
@@ -6,8 +6,8 @@
                 <label class="label">
                     <span class="label-text">Titel</span>
                 </label>
-                <input type="text" placeholder="Mein neuer Link" class="input input-bordered"
-                       [(ngModel)]="newLink.title" name="title"/>
+                <input [(ngModel)]="newLink.title" class="input input-bordered" name="title"
+                       placeholder="Mein neuer Link" type="text"/>
                 <label class="label">
                     <span class="label-text-alt">Mein neuer Link</span>
                 </label>
@@ -16,16 +16,16 @@
                 <label class="label">
                     <span class="label-text">Url</span>
                 </label>
-                <input type="text" placeholder="https://www.meinblog.de" class="input input-bordered"
-                       [(ngModel)]="newLink.url" name="url"/>
+                <input [(ngModel)]="newLink.url" class="input input-bordered" name="url"
+                       placeholder="https://www.meinblog.de" type="text"/>
                 <label class="label">
                     <span class="label-text-alt">https://www.meinblog.de</span>
                 </label>
             </div>
         </form>
         <div class="modal-action">
-            <button class="btn" (click)="onClickCloseModal()">Abbrechen</button>
-            <button class="btn btn-success" (click)="onClickSave(newLink)">Speichern</button>
+            <button (click)="onClickCloseModal()" class="btn">Abbrechen</button>
+            <button (click)="onClickSave(newLink)" class="btn btn-success">Speichern</button>
         </div>
     </div>
 </div>

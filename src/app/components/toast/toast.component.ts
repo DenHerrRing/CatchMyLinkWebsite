@@ -14,8 +14,6 @@ export class ToastComponent {
     toasts?: Toast[];
 
     constructor(private toastService: ToastService) {
-        this.toastService.getToasts().subscribe(toasts => {
-            this.toasts = toasts
-        })
+        this.toastService.getToasts().subscribe(toasts => this.toasts = toasts)
     }
 }

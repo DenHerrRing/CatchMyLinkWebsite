@@ -38,13 +38,13 @@ export class ToastService {
         setTimeout(() => this.clearToast(toast), 6000);
     }
 
+    getToasts(): Observable<Toast[]> {
+        return this.toastsSubject.asObservable();
+    }
+
     private clearToast(toast: Toast) {
         this.toasts = this.toasts.filter(x => x !== toast);
         this.toastsSubject.next(this.toasts);
-    }
-
-    getToasts(): Observable<Toast[]> {
-        return this.toastsSubject.asObservable();
     }
 
 }

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {FormsModule} from "@angular/forms";
 import {LinksApiService} from "../../../shared/api/links-api.service";
 import {AppStorageService} from "../../../shared/services/app-storage.service";
@@ -9,13 +9,13 @@ import {UsersApiService} from "../../../shared/api/users-api.service";
 import {ToastService} from "../../../shared/services/toast.service";
 
 @Component({
-  selector: 'app-configs',
-  standalone: true,
+    selector: 'app-configs',
+    standalone: true,
     imports: [CommonModule, FormsModule],
-  templateUrl: './configs.component.html',
-  styleUrls: ['./configs.component.css']
+    templateUrl: './configs.component.html',
+    styleUrls: ['./configs.component.css']
 })
-export class ConfigsComponent implements OnInit{
+export class ConfigsComponent implements OnInit {
     linkData: LinkData = new LinkData()
     user!: UserResponse
     // TODO: Wenn der User geändert wird, muss dieser in UserResponse gespeichert werden! Genauso das Passwort, welches geändert wird!
@@ -23,6 +23,7 @@ export class ConfigsComponent implements OnInit{
     showLoading: boolean = false
 
     showChangePasswordButtonLoading: boolean = false
+
     constructor(private linksApiService: LinksApiService,
                 private usersApiService: UsersApiService,
                 private appStorageService: AppStorageService,
@@ -32,19 +33,19 @@ export class ConfigsComponent implements OnInit{
 
     onClickChangePassword(): void {
         this.showChangePasswordButtonLoading = true
-        this.usersApiService.changePassword(this.user.email).subscribe(
-            () => {
+        this.usersApiService.changePassword(this.user.email).subscribe({
+            next: () => {
                 this.toastService.showSuccessToast('Du hast eine Email erhalten, mit welcher du dein Password ändern / zurücksetzen kannst!')
                 this.showChangePasswordButtonLoading = false
             },
-            error => {
+            error: error => {
                 this.toastService.showErrorToast(error.error.message)
                 this.showChangePasswordButtonLoading = false
             }
-        )
+        })
     }
 
-    onClickSaveUser():void {
+    onClickSaveUser(): void {
         // TODO: Diese Funktionalität muss noch überdacht werden!
         return
         // this.showLoading = true
@@ -61,16 +62,16 @@ export class ConfigsComponent implements OnInit{
 
     onClickSave(): void {
         this.showLoading = true
-        this.linksApiService.update(this.appStorageService.linksId, this.linkData).subscribe(
-            data => {
+        this.linksApiService.update(this.appStorageService.linksId, this.linkData).subscribe({
+            next: data => {
                 this.linkData = data.data
                 this.showLoading = false
             },
-            error => {
+            error: error => {
                 this.toastService.showErrorToast(error.error.message)
                 this.showLoading = false
             }
-        )
+        })
         this.appStorageService.emitChangesOnLinkData.next(this.linkData)
     }
 
@@ -80,12 +81,10 @@ export class ConfigsComponent implements OnInit{
     }
 
     ngOnInit(): void {
-        this.linksApiService.get(this.appStorageService.linksId).subscribe(
-            data => {
-                this.linkData = data
-            },
-            error => this.toastService.showErrorToast(error.error.message)
-        )
+        this.linksApiService.get(this.appStorageService.linksId).subscribe({
+            next: data => this.linkData = data,
+            error: error => this.toastService.showErrorToast(error.error.message)
+        })
         this.user = this.appStorageService.user
     }
 

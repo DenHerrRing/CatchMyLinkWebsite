@@ -1,15 +1,15 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {Social} from "../../../../shared/models/social";
 import {IconService} from "../../../../shared/services/icon.service";
 import {FormsModule} from "@angular/forms";
 
 @Component({
-  selector: 'app-edit-social-modal',
-  standalone: true,
+    selector: 'app-edit-social-modal',
+    standalone: true,
     imports: [CommonModule, FormsModule],
-  templateUrl: './edit-social-modal.component.html',
-  styleUrls: ['./edit-social-modal.component.css']
+    templateUrl: './edit-social-modal.component.html',
+    styleUrls: ['./edit-social-modal.component.css']
 })
 export class EditSocialModalComponent {
     @Input() social: Social = new Social()

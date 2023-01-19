@@ -2,39 +2,40 @@
 
     <div class="flex w-full mb-8">
         <div class="flex-grow text-center">
-            <button class="btn" (click)="onClickAddLink()">+ Link</button>
+            <button (click)="onClickAddLink()" class="btn">+ Link</button>
         </div>
         <div class="flex-grow text-center">
-            <button class="btn" (click)="onClickAddSocial()">+ Social</button>
+            <button (click)="onClickAddSocial()" class="btn">+ Social</button>
         </div>
     </div>
 
     <div class="divider">Links</div>
 
-    <div class="flex flex-col" cdkDropList (cdkDropListDropped)="onDropLink($event)">
+    <div (cdkDropListDropped)="onDropLink($event)" cdkDropList class="flex flex-col">
         <ng-container *ngFor="let link of linkData.links">
-            <div class="grid flex-grow mb-3"
-                 (mouseenter)="hoverListItem(link)"
-                 (mouseleave)="hoverListItem(link)">
-                <div class="rounded border-1 border-solid border-black p-2 flex shadow-lg"
+            <div (mouseenter)="hoverListItem(link)"
+                 (mouseleave)="hoverListItem(link)"
+                 class="grid flex-grow mb-3">
+                <div (cdkDragStarted)="onDropStart(link)"
                      [ngClass]="{'card-side': link.isHovered}"
-                     cdkDrag (cdkDragStarted)="onDropStart(link)">
+                     cdkDrag class="rounded border-1 border-solid border-black p-2 flex shadow-lg">
                     <figure *ngIf="link.isHovered" class="mr-2">
-                        <img class="btn btn-square btn-ghost p-2" src="./assets/icons/recycle-bin.png" alt="Album" (click)="onClickDeleteLink(link)"/>
+                        <img (click)="onClickDeleteLink(link)" alt="Album" class="btn btn-square btn-ghost p-2"
+                             src="./assets/icons/recycle-bin.png"/>
                     </figure>
-                    <div class="flex-auto"
-                         (click)="onClickEditLink(link)">
+                    <div (click)="onClickEditLink(link)"
+                         class="flex-auto">
                         <h3 class="card-title">{{link.title}}</h3>
                         <p>{{link.url}}</p>
                     </div>
-                    <div class="grid flex-col place-items-center" cdkDragHandle>
-                        <svg class="w-10 h-6" viewBox="0 0 14 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="2.5" cy="2.5" r="2.5" fill="#CFCED3"></circle>
-                            <circle cx="2.5" cy="9.5" r="2.5" fill="#CFCED3"></circle>
-                            <circle cx="2.5" cy="16.5" r="2.5" fill="#CFCED3"></circle>
-                            <circle cx="10.6328" cy="2.5" r="2.5" fill="#CFCED3"></circle>
-                            <circle cx="10.6328" cy="9.5" r="2.5" fill="#CFCED3"></circle>
-                            <circle cx="10.6328" cy="16.5" r="2.5" fill="#CFCED3"></circle>
+                    <div cdkDragHandle class="grid flex-col place-items-center">
+                        <svg class="w-10 h-6" fill="none" viewBox="0 0 14 19" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="2.5" cy="2.5" fill="#CFCED3" r="2.5"></circle>
+                            <circle cx="2.5" cy="9.5" fill="#CFCED3" r="2.5"></circle>
+                            <circle cx="2.5" cy="16.5" fill="#CFCED3" r="2.5"></circle>
+                            <circle cx="10.6328" cy="2.5" fill="#CFCED3" r="2.5"></circle>
+                            <circle cx="10.6328" cy="9.5" fill="#CFCED3" r="2.5"></circle>
+                            <circle cx="10.6328" cy="16.5" fill="#CFCED3" r="2.5"></circle>
                         </svg>
                     </div>
                 </div>
@@ -44,31 +45,33 @@
 
     <div class="divider">Socials</div>
 
-    <div class="flex flex-col" cdkDropList (cdkDropListDropped)="onDropSocial($event)">
+    <div (cdkDropListDropped)="onDropSocial($event)" cdkDropList class="flex flex-col">
         <ng-container *ngFor="let social of linkData.socials">
-            <div class="grid flex-grow mb-3"
-                 (mouseenter)="hoverListItem(social)"
-                 (mouseleave)="hoverListItem(social)">
-                <div class="rounded border-1 border-solid border-black p-2 flex shadow-lg" cdkDrag [ngClass]="{'card-side': social.isHovered}" (cdkDragStarted)="onDropStart(social)">
+            <div (mouseenter)="hoverListItem(social)"
+                 (mouseleave)="hoverListItem(social)"
+                 class="grid flex-grow mb-3">
+                <div (cdkDragStarted)="onDropStart(social)" [ngClass]="{'card-side': social.isHovered}"
+                     cdkDrag class="rounded border-1 border-solid border-black p-2 flex shadow-lg">
                     <figure *ngIf="social.isHovered" class="mr-2">
-                        <img class="btn btn-square btn-ghost p-2" src="./assets/icons/recycle-bin.png" alt="Album" (click)="onClickDeleteSocial(social)"/>
+                        <img (click)="onClickDeleteSocial(social)" alt="Album" class="btn btn-square btn-ghost p-2"
+                             src="./assets/icons/recycle-bin.png"/>
                     </figure>
-                    <div class="mx-auto mr-3"
-                         (click)="onClickEditSocial(social)">
-                        <img *ngIf="!social.isHovered" class="w-12 h-12" alt="Social Icon" [src]="social.iconUrl"/>
+                    <div (click)="onClickEditSocial(social)"
+                         class="mx-auto mr-3">
+                        <img *ngIf="!social.isHovered" [src]="social.iconUrl" alt="Social Icon" class="w-12 h-12"/>
                     </div>
-                    <div class="flex-auto" (click)="onClickEditSocial(social)">
+                    <div (click)="onClickEditSocial(social)" class="flex-auto">
                         <h3 class="card-title">{{social.name}}</h3>
                         <p>{{getSocialUrl(social.preUrl, social.accountUrl)}}</p>
                     </div>
-                    <div class="grid flex-col place-items-center" cdkDragHandle>
-                        <svg class="w-10 h-6" viewBox="0 0 14 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="2.5" cy="2.5" r="2.5" fill="#CFCED3"></circle>
-                            <circle cx="2.5" cy="9.5" r="2.5" fill="#CFCED3"></circle>
-                            <circle cx="2.5" cy="16.5" r="2.5" fill="#CFCED3"></circle>
-                            <circle cx="10.6328" cy="2.5" r="2.5" fill="#CFCED3"></circle>
-                            <circle cx="10.6328" cy="9.5" r="2.5" fill="#CFCED3"></circle>
-                            <circle cx="10.6328" cy="16.5" r="2.5" fill="#CFCED3"></circle>
+                    <div cdkDragHandle class="grid flex-col place-items-center">
+                        <svg class="w-10 h-6" fill="none" viewBox="0 0 14 19" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="2.5" cy="2.5" fill="#CFCED3" r="2.5"></circle>
+                            <circle cx="2.5" cy="9.5" fill="#CFCED3" r="2.5"></circle>
+                            <circle cx="2.5" cy="16.5" fill="#CFCED3" r="2.5"></circle>
+                            <circle cx="10.6328" cy="2.5" fill="#CFCED3" r="2.5"></circle>
+                            <circle cx="10.6328" cy="9.5" fill="#CFCED3" r="2.5"></circle>
+                            <circle cx="10.6328" cy="16.5" fill="#CFCED3" r="2.5"></circle>
                         </svg>
                     </div>
                 </div>
@@ -78,11 +81,13 @@
     </div>
 </div>
 
-<app-add-link-modal [showModal]="showAddLinkModal" (closeModal)="onEmitCloseAddLinkModal($event)"
-                    (save)="onEmitSaveAddLinkModal($event)"></app-add-link-modal>
-<app-edit-link-modal [link]="selectedLink" [showModal]="showEditLinkModal" (closeModal)="onEmitCloseEditLinkModal($event)"
-                    (save)="onEmitSaveEditLinkModal()"></app-edit-link-modal>
-<app-add-social-modal [showModal]="showAddSocialModal" (closeModal)="onEmitCloseAddSocialModal($event)"
-                      (save)="onEmitSaveAddSocialModal($event)"></app-add-social-modal>
-<app-edit-social-modal [social]="selectedSocial" [showModal]="showEditSocialModal" (closeModal)="onEmitCloseEditSocialModal($event)"
-                      (save)="onEmitSaveEditSocialModal()"></app-edit-social-modal>
+<app-add-link-modal (closeModal)="onEmitCloseAddLinkModal($event)" (save)="onEmitSaveAddLinkModal($event)"
+                    [showModal]="showAddLinkModal"></app-add-link-modal>
+<app-edit-link-modal (closeModal)="onEmitCloseEditLinkModal($event)" (save)="onEmitSaveEditLinkModal()"
+                     [link]="selectedLink"
+                     [showModal]="showEditLinkModal"></app-edit-link-modal>
+<app-add-social-modal (closeModal)="onEmitCloseAddSocialModal($event)" (save)="onEmitSaveAddSocialModal($event)"
+                      [showModal]="showAddSocialModal"></app-add-social-modal>
+<app-edit-social-modal (closeModal)="onEmitCloseEditSocialModal($event)" (save)="onEmitSaveEditSocialModal()"
+                       [showModal]="showEditSocialModal"
+                       [social]="selectedSocial"></app-edit-social-modal>

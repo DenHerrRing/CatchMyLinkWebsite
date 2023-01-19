@@ -42,8 +42,8 @@ export class LinksComponent implements OnInit {
                 private toastService: ToastService) {
     }
 
-    hoverListItem(item: Link | Social):void {
-        item.isHovered = ! item.isHovered
+    hoverListItem(item: Link | Social): void {
+        item.isHovered = !item.isHovered
     }
 
     onDropLink(event: CdkDragDrop<Link[]>) {
@@ -51,7 +51,7 @@ export class LinksComponent implements OnInit {
         this.appStorageService.emitChangesOnLinkData.next(this.linkData)
     }
 
-    onDropStart(item: Link|Social) {
+    onDropStart(item: Link | Social) {
         item.isHovered = false
     }
 
@@ -142,18 +142,18 @@ export class LinksComponent implements OnInit {
     }
 
     saveLinkSocialState(linksData: LinkData): void {
-        this.linksApiService.update(this.appStorageService.linksId, linksData).subscribe(
-            data => {
+        this.linksApiService.update(this.appStorageService.linksId, linksData).subscribe({
+            next: data => {
                 this.linkData = data.data
             },
-            error => this.toastService.showErrorToast(error.error.message)
-        )
+            error: error => this.toastService.showErrorToast(error.error.message)
+        })
     }
 
     ngOnInit(): void {
-        this.linksApiService.get(this.appStorageService.linksId).subscribe(
-            data => this.linkData = data,
-            error => this.toastService.showErrorToast(error.error.message)
-        )
+        this.linksApiService.get(this.appStorageService.linksId).subscribe({
+            next: data => this.linkData = data,
+            error: error => this.toastService.showErrorToast(error.error.message)
+        })
     }
 }

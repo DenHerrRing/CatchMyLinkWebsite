@@ -19,7 +19,8 @@ export class AppStorageService {
     showQrCodeModal: boolean = false
 
     constructor(private authService: AuthApiService,
-                private toastService: ToastService) {}
+                private toastService: ToastService) {
+    }
 
     async logout(): Promise<void> {
         try {

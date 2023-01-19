@@ -1,15 +1,15 @@
 <div class="flex flex-col w-full border-opacity-50">
     <div class="grid card rounded-box place-items-center text-center mt-8">
         <div class="w-54 h-54 mb-2">
-            <img class="mask mask-hexagon-2 w-54 h-54" alt="Profilbild" [src]="linkData.config.profilePicturePath"/>
+            <img [src]="linkData.config.profilePicturePath" alt="Profilbild" class="mask mask-hexagon-2 w-54 h-54"/>
         </div>
         {{linkData.config.firstName}} {{linkData.config.lastName}}<br>
         {{linkData.config.username}}
-        <div class="flex flex-row flex-wrap my-6 justify-center" *ngIf="linkData.config.socialTop">
+        <div *ngIf="linkData.config.socialTop" class="flex flex-row flex-wrap my-6 justify-center">
             <ng-container *ngFor="let social of linkData.socials">
                 <div class="w-10 h-10 mx-4 my-2">
                     <a [href]="getSocialUrl(social.preUrl, social.accountUrl)" target="_blank">
-                        <img class="mask mask-circle" alt="Social Icon Bild" [src]="social.iconUrl"/>
+                        <img [src]="social.iconUrl" alt="Social Icon Bild" class="mask mask-circle"/>
                     </a>
                 </div>
             </ng-container>
@@ -18,17 +18,17 @@
     <div class="grid card rounded-box place-items-center mt-4">
         <ng-container *ngFor="let link of linkData.links">
             <div class="mb-8">
-                <a class="btn btn-wide" [href]="link.url" target="_blank">{{link.title}}</a>
+                <a [href]="link.url" class="btn btn-wide" target="_blank">{{link.title}}</a>
             </div>
         </ng-container>
     </div>
 
-    <div class="grid card rounded-box place-items-center mt-4" *ngIf="!linkData.config.socialTop">
-        <div class="flex flex-row flex-wrap my-6 justify-center" >
+    <div *ngIf="!linkData.config.socialTop" class="grid card rounded-box place-items-center mt-4">
+        <div class="flex flex-row flex-wrap my-6 justify-center">
             <ng-container *ngFor="let social of linkData.socials">
                 <div class="w-10 h-10 mx-4 my-2">
                     <a [href]="getSocialUrl(social.preUrl, social.accountUrl)" target="_blank">
-                        <img class="mask mask-circle" alt="Social Icon Bild" [src]="social.iconUrl"/>
+                        <img [src]="social.iconUrl" alt="Social Icon Bild" class="mask mask-circle"/>
                     </a>
                 </div>
             </ng-container>
@@ -40,4 +40,5 @@
     </div>
 </div>
 
-<app-sensitive-content-modal [showModal]="showSensitiveModal" (closeModal)="onCloseSensitiveModal($event)"></app-sensitive-content-modal>
+<app-sensitive-content-modal (closeModal)="onCloseSensitiveModal($event)"
+                             [showModal]="showSensitiveModal"></app-sensitive-content-modal>

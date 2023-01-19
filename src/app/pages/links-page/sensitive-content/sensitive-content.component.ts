@@ -1,12 +1,12 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 
 @Component({
-  selector: 'app-sensitive-content-modal',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './sensitive-content.component.html',
-  styleUrls: ['./sensitive-content.component.css']
+    selector: 'app-sensitive-content-modal',
+    standalone: true,
+    imports: [CommonModule],
+    templateUrl: './sensitive-content.component.html',
+    styleUrls: ['./sensitive-content.component.css']
 })
 export class SensitiveContentComponent {
     @Input() showModal!: boolean

@@ -1,5 +1,5 @@
 <div class="toast">
-    <div class="alert" [ngClass]="toast.type" *ngFor="let toast of toasts">
+    <div *ngFor="let toast of toasts" [ngClass]="toast.type" class="alert">
         <div>
             <span>{{toast.message}}</span>
         </div>

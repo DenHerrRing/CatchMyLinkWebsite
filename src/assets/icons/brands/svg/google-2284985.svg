@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round" stroke-width="43" aria-label="Google Podcasts" viewBox="0 0 512 512"><rect width="512" height="512" fill="#fff" rx="15%"/><path stroke="#fab908" d="M256 109v22zM256 381v22zM256 195v122"/><path stroke="#ea4335" d="M181 176v75zM181 315v21z"/><path stroke="#34a853" d="M331 261v75zM331 197v-21z"/><path stroke="#4285f4" d="M405 245v22"/><path stroke="#0066d9" d="M107 245v22"/></svg>
+<svg aria-label="Google Podcasts" stroke-linecap="round" stroke-linejoin="round" stroke-width="43"
+     viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+    <rect fill="#fff" height="512" rx="15%" width="512"/>
+    <path d="M256 109v22zM256 381v22zM256 195v122" stroke="#fab908"/>
+    <path d="M181 176v75zM181 315v21z" stroke="#ea4335"/>
+    <path d="M331 261v75zM331 197v-21z" stroke="#34a853"/>
+    <path d="M405 245v22" stroke="#4285f4"/>
+    <path d="M107 245v22" stroke="#0066d9"/>
+</svg>

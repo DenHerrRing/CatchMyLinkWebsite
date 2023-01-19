@@ -1,15 +1,15 @@
-<div class="modal" [ngClass]="{'modal-open': showModal}">
+<div [ngClass]="{'modal-open': showModal}" class="modal">
     <div class="modal-box w-full">
         <h3 class="font-bold text-lg">Wähle ein Social aus</h3>
         <div class="overflow-x-auto">
             <table class="table">
 
-                <tr *ngFor="let icon of socialIcons.getSocialIcons()" (click)="onClickSelectIcon(icon)">
+                <tr (click)="onClickSelectIcon(icon)" *ngFor="let icon of socialIcons.getSocialIcons()">
                     <td>
                         <div class="flex items-center space-x-3">
                             <div class="avatar">
                                 <div class="mask mask-squircle w-12 h-12">
-                                    <img [src]="icon.iconUrl" alt="Social Icon" />
+                                    <img [src]="icon.iconUrl" alt="Social Icon"/>
                                 </div>
                             </div>
                             <div>
@@ -23,12 +23,12 @@
             </table>
         </div>
         <div class="modal-action">
-            <button class="btn" (click)="onClickCloseModal()">Abbrechen</button>
+            <button (click)="onClickCloseModal()" class="btn">Abbrechen</button>
         </div>
     </div>
 </div>
 
-<div class="modal" [ngClass]="{'modal-open': showDetails}">
+<div [ngClass]="{'modal-open': showDetails}" class="modal">
     <div class="modal-box">
         <h3 class="font-bold text-lg">Hier kannst du einen neuen Social Link anlegen</h3>
         <form class="w-full">
@@ -36,8 +36,8 @@
                 <label class="label">
                     <span class="label-text">Titel</span>
                 </label>
-                <input type="text" placeholder="Mein neuer Link" class="input input-bordered"
-                       [(ngModel)]="newSocial.name" name="title" disabled/>
+                <input [(ngModel)]="newSocial.name" class="input input-bordered" disabled
+                       name="title" placeholder="Mein neuer Link" type="text"/>
                 <label class="label">
                     <span class="label-text-alt">Mein neuer Link</span>
                 </label>
@@ -48,14 +48,15 @@
                 </label>
                 <label class="input-group">
                     <span>{{newSocial.preUrl}}</span>
-                    <input type="text" [placeholder]="newSocial.placeholder" class="input input-bordered" [(ngModel)]="newSocial.accountUrl" name="accountUrl"/>
+                    <input [(ngModel)]="newSocial.accountUrl" [placeholder]="newSocial.placeholder" class="input input-bordered"
+                           name="accountUrl" type="text"/>
                 </label>
             </div>
         </form>
         <div class="modal-action">
-            <button class="btn" (click)="onClickCloseModal()">Abbrechen</button>
-            <button class="btn" (click)="onClickBack()">Zurück</button>
-            <button class="btn btn-success" (click)="onClickSave(newSocial)">Speichern</button>
+            <button (click)="onClickCloseModal()" class="btn">Abbrechen</button>
+            <button (click)="onClickBack()" class="btn">Zurück</button>
+            <button (click)="onClickSave(newSocial)" class="btn btn-success">Speichern</button>
         </div>
     </div>
 </div>

@@ -3,9 +3,9 @@
         <div class="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
             <div class="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0">
                 <img
-                    src="./assets/img/logo.png"
-                    class="w-full"
                     alt="Sample image"
+                    class="w-full"
+                    src="./assets/img/logo.png"
                 />
             </div>
             <div class="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
@@ -75,8 +75,8 @@
                             </label>
                             <label class="input-group">
                                 <span>catchmy.link/@</span>
-                                <input type="text" placeholder="DenHerrRing" class="input input-bordered"
-                                       [(ngModel)]="identity" name="identity"/>
+                                <input [(ngModel)]="identity" class="input input-bordered" name="identity"
+                                       placeholder="DenHerrRing" type="text"/>
                             </label>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
                             <label class="label">
                                 <span class="label-text">Passwort</span>
                             </label>
-                            <input type="password" class="input input-bordered" [(ngModel)]="password" name="password"/>
+                            <input [(ngModel)]="password" class="input input-bordered" name="password" type="password"/>
                         </div>
                     </div>
 
@@ -102,17 +102,17 @@
                         <!--                                Remember me-->
                         <!--                            </label>-->
                         <!--                        </div>-->
-                        <a href="#!" class="text-gray-800">Password vergessen?</a>
+<!--                        <a class="text-gray-800" href="#">Password vergessen?</a>-->
                     </div>
 
                     <div class="text-center lg:text-left">
-                        <button class="btn" [ngClass]="{'loading': loading}" (click)="onClickSubmit()">
+                        <button (click)="onClickSubmit()" [ngClass]="{'loading': loading}" class="btn">
                             Login
                         </button>
                         <p class="text-sm  mt-2 pt-1 mb-0">
                             Du hast noch keinen Account?
-                            <a routerLink="/signup"
-                               class="text-gray-800 hover:text-gray-800 focus:text-gray-800 transition duration-200 ease-in-out font-semibold">Registrieren</a>
+                            <a class="text-gray-800 hover:text-gray-800 focus:text-gray-800 transition duration-200 ease-in-out font-semibold"
+                               routerLink="/signup">Registrieren</a>
                         </p>
                     </div>
                 </form>

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {LinkData} from "../../../shared/models/link-data";
 import {UserResponse} from "../../../shared/models/api/responses/user.response";
 import {LinksApiService} from "../../../shared/api/links-api.service";
@@ -10,11 +10,11 @@ import {environment} from "../../../../environments/environment";
 import {ToastService} from "../../../shared/services/toast.service";
 
 @Component({
-  selector: 'app-design',
-  standalone: true,
+    selector: 'app-design',
+    standalone: true,
     imports: [CommonModule, FormsModule],
-  templateUrl: './design.component.html',
-  styleUrls: ['./design.component.css']
+    templateUrl: './design.component.html',
+    styleUrls: ['./design.component.css']
 })
 export class DesignComponent implements OnInit {
     linkData: LinkData = new LinkData()
@@ -22,6 +22,7 @@ export class DesignComponent implements OnInit {
     // TODO: Wenn der User geändert wird, muss dieser in UserResponse gespeichert werden! Genauso das Passwort, welches geändert wird!
 
     showLoading: boolean = false
+
     constructor(private linksApiService: LinksApiService,
                 private appStorageService: AppStorageService,
                 private usersApiService: UsersApiService,
@@ -33,7 +34,7 @@ export class DesignComponent implements OnInit {
         this.appStorageService.emitChangesOnLinkData.next(this.linkData)
     }
 
-    onClickSave(): void{
+    onClickSave(): void {
         this.showLoading = true
         this.linksApiService.update(this.appStorageService.linksId, this.linkData).subscribe(
             () => {
@@ -47,6 +48,7 @@ export class DesignComponent implements OnInit {
         )
 
     }
+
     onClickSaveProfile(): void {
         this.showLoading = true
 
@@ -83,7 +85,7 @@ export class DesignComponent implements OnInit {
         data.append('profilePicture', file)
 
         this.linksApiService.uploadFile(this.appStorageService.linksId, data).subscribe(
-            linksData =>{
+            linksData => {
                 this.linkData.config.profilePicturePath = `${environment.dbUrl}/api/files/${environment.dbCollection}/${this.appStorageService.linksId}/${linksData.profilePicture}?thumb=150x150`
                 this.linksApiService.update(this.appStorageService.linksId, this.linkData).subscribe(
                     () => {
@@ -93,12 +95,10 @@ export class DesignComponent implements OnInit {
                         this.toastService.showErrorToast(error.error.message)
                     }
                 )
-            }, error =>  {
+            }, error => {
                 this.toastService.showErrorToast(error.error.message)
             }
         )
-
-
 
 
     }

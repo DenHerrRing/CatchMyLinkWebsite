@@ -1,14 +1,14 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {Link} from "../../../../shared/models/link";
 import {FormsModule} from "@angular/forms";
 
 @Component({
-  selector: 'app-edit-link-modal',
-  standalone: true,
+    selector: 'app-edit-link-modal',
+    standalone: true,
     imports: [CommonModule, FormsModule],
-  templateUrl: './edit-link-modal.component.html',
-  styleUrls: ['./edit-link-modal.component.css']
+    templateUrl: './edit-link-modal.component.html',
+    styleUrls: ['./edit-link-modal.component.css']
 })
 export class EditLinkModalComponent {
     @Input() link!: Link

@@ -1,23 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { EditLinkModalComponent } from './edit-link-modal.component';
+import {EditLinkModalComponent} from './edit-link-modal.component';
 
 describe('EditLinkModalComponent', () => {
-  let component: EditLinkModalComponent;
-  let fixture: ComponentFixture<EditLinkModalComponent>;
+    let component: EditLinkModalComponent;
+    let fixture: ComponentFixture<EditLinkModalComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [ EditLinkModalComponent ]
-    })
-    .compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [EditLinkModalComponent]
+        })
+            .compileComponents();
 
-    fixture = TestBed.createComponent(EditLinkModalComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+        fixture = TestBed.createComponent(EditLinkModalComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

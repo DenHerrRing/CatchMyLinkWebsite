@@ -9,14 +9,12 @@ export class IconService {
 
     constructor() {
         this.createSocialIcons()
-        const sortItems = this.socialIcons.sort((a, b) => (a.name < b.name) ? -1 : 1);
-        this.socialIcons = sortItems
+        this.socialIcons = this.socialIcons.sort((a, b) => (a.name < b.name) ? -1 : 1);
     }
 
     getSocialIcons(): SocialIcon[] {
         return this.socialIcons
     }
-
 
 
     private createSocialIcons(): void {
